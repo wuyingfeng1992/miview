@@ -1,7 +1,6 @@
 {
-  "name": "@ly/ly-toast",
+  "name": "@ly/ly-transfer",
   "version": "0.0.1",
-  "description": "toast vue component for yy mobile",
   "main": "lib/index.min.js",
   "module": "index.js",
   "scripts": {

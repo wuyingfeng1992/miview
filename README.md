@@ -1,29 +1,5 @@
 # element-ui-extends
 
-## Project setup
-```
-yarn install
-```
+## 项目构建参考
 
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
-
-### Compiles and minifies for production
-```
-yarn run build
-```
-
-### Run your tests
-```
-yarn run test
-```
-
-### Lints and fixes files
-```
-yarn run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+1. [mu-ui](https://github.com/mu-ui/mu-ui)
