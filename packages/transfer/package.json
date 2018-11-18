@@ -6,5 +6,8 @@
   "scripts": {
     "build": "rimraf lib && webpack --config ../../build/webpack.umd.js"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "vuedraggable": "2.15.0"
+  }
 }

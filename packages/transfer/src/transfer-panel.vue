@@ -1,17 +1,23 @@
 <template>
-  <div class="el-transfer-panel">
+  <div class="el-transfer-panel" :style="{width}">
     <p class="el-transfer-panel__header">
       <el-checkbox v-model="allChecked" @change="handleAllCheckedChange" :indeterminate="isIndeterminate">
         {{ title }}
+        <span v-if="isDraggable" :style="{position:'absolute',color:'#909399',fontSize:'13px',fontWeight:'400',left:'50%',marginLeft:draggableTextMarginLeft}">{{draggableText}}</span>
         <span>{{ checkedSummary }}</span>
       </el-checkbox>
     </p>
 
     <div :class="['el-transfer-panel__body', hasFooter ? 'is-with-footer' : '']">
       <el-input class="el-transfer-panel__filter" v-model="query" size="small" :placeholder="placeholder" @mouseenter.native="inputHover = true" @mouseleave.native="inputHover = false" v-if="filterable">
-        <i slot="prefix" :class="['el-input__icon', 'el-icon-' + inputIcon]" @click="clearQuery"></i>
+        <!-- <i slot="prefix" :class="['el-input__icon', 'el-icon-' + inputIcon]" @click="clearQuery"></i> -->
       </el-input>
-      <el-checkbox-group v-model="checked" v-show="!hasNoMatch && data.length > 0" :class="{ 'is-filterable': filterable }" class="el-transfer-panel__list">
+      <draggable v-if="isDraggable" element="el-checkbox-group" :list="filteredData" :component-data="getComponentData()" @end="dragEnd" v-show="!hasNoMatch && data.length > 0" :class="{ 'is-filterable': filterable }" class="el-transfer-panel__list">
+        <el-checkbox class="el-transfer-panel__item" :label="item[keyProp]" :disabled="item[disabledProp]" :key="item[keyProp]" v-for="item in filteredData">
+          <option-content :option="item"></option-content>
+        </el-checkbox>
+      </draggable>
+      <el-checkbox-group v-else v-model="checked" v-show="!hasNoMatch && data.length > 0" :class="{ 'is-filterable': filterable }" class="el-transfer-panel__list">
         <el-checkbox class="el-transfer-panel__item" :label="item[keyProp]" :disabled="item[disabledProp]" :key="item[keyProp]" v-for="item in filteredData">
           <option-content :option="item"></option-content>
         </el-checkbox>
@@ -31,6 +37,9 @@ import ElCheckbox from 'element-ui/packages/checkbox';
 import ElInput from 'element-ui/packages/input';
 import Locale from 'element-ui/src/mixins/locale';
 
+// 引入拖拽组件
+import draggable from 'vuedraggable';
+
 export default {
   mixins: [Locale],
 
@@ -39,6 +48,7 @@ export default {
   componentName: 'ElTransferPanel',
 
   components: {
+    draggable,
     ElCheckboxGroup,
     ElCheckbox,
     ElInput,
@@ -81,7 +91,18 @@ export default {
     format: Object,
     filterMethod: Function,
     defaultChecked: Array,
-    props: Object
+    props: Object,
+
+    // 新增拖拽prop参数
+    draggableText: {
+      type: String,
+      default: ''
+    },
+    width: {
+      type: String,
+      default: '' // 对象或数组默认值必须从一个工厂函数获取
+    },
+    isDraggable: Boolean
   },
 
   data () {
@@ -199,7 +220,16 @@ export default {
 
     hasFooter () {
       return !!this.$slots.default;
-    }
+    },
+
+    // 新增拖拽样式
+    draggableTextMarginLeft () {
+      let ret = '0px'
+      if (this.graggableText) {
+        ret = `-${this.graggableText.length * 13 / 2}px`
+      }
+      return ret
+    },
   },
 
   methods: {
@@ -210,6 +240,9 @@ export default {
     },
 
     handleAllCheckedChange (value) {
+      // element ui 2.49与1.4的check兼容问题
+      // value = this.allChecked
+
       this.checked = value
         ? this.checkableData.map(item => item[this.keyProp])
         : [];
@@ -219,6 +252,58 @@ export default {
       if (this.inputIcon === 'circle-close') {
         this.query = '';
       }
+    },
+
+    // 新增拖拽函数方法
+    getComponentData () {
+      console.log('1111')
+      return {
+        on: {
+          change: this.handleChange,
+          input: this.handleChange
+        },
+        props: {
+          value: this.checked
+        }
+      }
+    },
+
+    handleChange (value) {
+      this.checked = value
+    },
+
+    dragEnd (event) {
+      let oldIndex = event.oldIndex
+      let newIndex = event.newIndex
+      this.query.length ? this._sortDragFilter(this.data, oldIndex, newIndex) : this._sortDrag(this.data, oldIndex, newIndex)
+      this.$forceUpdate()
+      let data = this.data.map(item => {
+        return item.key
+      })
+      this.$emit('dragSort', data)
+    },
+
+    // 拖动后元素排序
+    _sortDrag (arr, oldIndex, newIndex) {
+      let item = arr[oldIndex]
+      arr.splice(oldIndex, 1)
+      arr.splice(newIndex, 0, item)
+      console.log('_sortDrag: ', arr);
+    },
+
+    // 搜索后拖拽排序
+    _sortDragFilter (arr, oldIndex, newIndex) {
+      // debugger
+      let key = this.filteredData[newIndex].key
+      let nextKey = this.filteredData[newIndex + 1] ? this.filteredData[newIndex + 1].key : this.filteredData[newIndex - 1].key
+      let keyIndex = arr.findIndex(item => {
+        return item.key === key
+      })
+      let nextKeyIndex = arr.findIndex(item => {
+        return item.key === nextKey
+      })
+      keyIndex < nextKeyIndex ? nextKeyIndex-- : nextKeyIndex
+      this._sortDrag(arr, keyIndex, nextKeyIndex)
     }
   }
 };

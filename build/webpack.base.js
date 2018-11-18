@@ -29,8 +29,8 @@ module.exports = mode => ({
         test: /\.js$/,
         loader: 'babel-loader',
         options: { ...babelConfig },
-        include: [resolve('src'), resolve('packages')]
-        // exclude: file => /node_modules/.test(file) && !/\.vue/.test(file)
+        // include: [resolve('src'), resolve('packages')]
+        exclude: file => /node_modules/.test(file) && !/\.vue/.test(file)
       },
       {
         test: /\.vue$/,

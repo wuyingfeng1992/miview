@@ -1,7 +1,7 @@
 <template>
   <div class="transfer">
     <div class="el-transfer">
-      <transfer-panel v-bind="$props" ref="leftPanel" :data="sourceData" :title="titles[0] || t('el.transfer.titles.0')" :default-checked="leftDefaultChecked" :placeholder="filterPlaceholder || t('el.transfer.filterPlaceholder')" @checked-change="onSourceCheckedChange">
+      <transfer-panel v-bind="$props" ref="leftPanel" :data="sourceData" :title="titles[0] || t('el.transfer.titles.0')" :default-checked="leftDefaultChecked" :placeholder="filterPlaceholder || t('el.transfer.filterPlaceholder')" @checked-change="onSourceCheckedChange" :is-draggable="isLeftDraggable" :draggableText='leftDraggableText'>
         <slot name="left-footer"></slot>
       </transfer-panel>
       <div class="el-transfer__buttons">
@@ -14,7 +14,7 @@
           <i class="el-icon-arrow-right"></i>
         </el-button>
       </div>
-      <transfer-panel v-bind="$props" ref="rightPanel" :data="targetData" :title="titles[1] || t('el.transfer.titles.1')" :default-checked="rightDefaultChecked" :placeholder="filterPlaceholder || t('el.transfer.filterPlaceholder')" @checked-change="onTargetCheckedChange">
+      <transfer-panel v-bind="$props" ref="rightPanel" :data="targetData" :title="titles[1] || t('el.transfer.titles.1')" :default-checked="rightDefaultChecked" :placeholder="filterPlaceholder || t('el.transfer.filterPlaceholder')" @checked-change="onTargetCheckedChange" :is-draggable="isRightDraggable" :draggableText='rightDraggableText' @dragSort="dragSort" :width='width'>
         <slot name="right-footer"></slot>
       </transfer-panel>
     </div>
@@ -101,6 +101,26 @@ export default {
     targetOrder: {
       type: String,
       default: 'original'
+    },
+    width: { // 穿梭框的宽度
+      type: String,
+      default: '200px'
+    },
+    isLeftDraggable: { // 穿梭框头部提示语是否显示
+      type: Boolean,
+      default: false
+    },
+    isRightDraggable: { // 穿梭框头部提示语是否显示
+      type: Boolean,
+      default: false
+    },
+    leftDraggableText: { // 穿梭框头部提示语
+      type: String,
+      default: '拖拽未选科目进行排序'
+    },
+    rightDraggableText: { // 穿梭框头部提示语
+      type: String,
+      default: '拖拽已选科目进行排序'
     }
   },
 
@@ -205,6 +225,13 @@ export default {
       } else if (which === 'right') {
         this.$refs.rightPanel.query = '';
       }
+    },
+
+    // 新增拖拽回调方法
+    dragSort (data) {
+      this.$emit('input', data)
+      console.log('dragSort: ', data)
+      // this.$emit('change', data, 'dragSort')
     }
   }
 };
