@@ -3,6 +3,7 @@
     <div class="page">
       <router-link to="/toast" class="btn">toast</router-link>
       <router-link to="/table" class="btn">table</router-link>
+      <router-link to="/transfer" class="btn">transfer</router-link>
       <router-view class="main"></router-view>
     </div>
   </div>

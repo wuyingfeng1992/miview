@@ -1,27 +1,24 @@
 module.exports = {
   presets: [
     [
-      "@babel/preset-env",
+      '@babel/preset-env',
       {
         modules: false,
-        useBuiltIns: "usage"
+        useBuiltIns: 'usage',
+        targets: {
+          browsers: ['last 5 versions', 'ie >= 9']
+        }
       }
     ]
   ],
   plugins: [
-    "syntax-dynamic-import",
+    'syntax-dynamic-import',
     [
-      "@babel/plugin-transform-runtime",
+      '@babel/plugin-transform-runtime',
       {
         corejs: 2
       }
     ],
-    [
-      "component",
-      {
-        libraryName: "element-ui",
-        styleLibraryName: "theme-chalk"
-      }
-    ]
+    '@vue/transform-vue-jsx'
   ]
-};
+}
