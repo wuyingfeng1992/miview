@@ -41,12 +41,12 @@ export default {
       data: generateData(),
       checkList: [1, 3],
       list: [
-        { name: "张三" },
-        { name: "李四" },
-        { name: "王五" }
+        { name: '张三' },
+        { name: '李四' },
+        { name: '王五' }
       ],
       dragOptions: {
-        animation: 0,
+        animation: 0
         // group: "description",
         // disabled: true,
         // ghostClass: "ghost"
@@ -86,9 +86,9 @@ export default {
       // this.query.length ? this._sortDragFilter(this.data, oldIndex, newIndex) : this._sortDrag(this.data, oldIndex, newIndex)
       this._sortDrag(this.data, oldIndex, newIndex)
       this.$forceUpdate()
-      let data = this.data.map(item => {
-        return item.key
-      })
+      // let data = this.data.map(item => {
+      //   return item.key
+      // })
       // this.$emit('dragSort', data)
     },
     // 拖动后元素排序

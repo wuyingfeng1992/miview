@@ -36,7 +36,7 @@ export default {
   },
   watch: {
     selectedCourseId: {
-      handler(val) {
+      handler (val) {
         console.log('selectedCourseId: ', val)
       }
     }

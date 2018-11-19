@@ -229,7 +229,7 @@ export default {
         ret = `-${this.graggableText.length * 13 / 2}px`
       }
       return ret
-    },
+    }
   },
 
   methods: {
@@ -276,9 +276,9 @@ export default {
       let newIndex = event.newIndex
       this.query.length ? this._sortDragFilter(this.data, oldIndex, newIndex) : this._sortDrag(this.data, oldIndex, newIndex)
       this.$forceUpdate()
-      let data = this.data.map(item => {
-        return item.key
-      })
+      // let data = this.data.map(item => {
+      //   return item.key
+      // })
       // this.$emit('dragSort', data) // 这句代码影响到，选中checkbox
     },
 
@@ -301,6 +301,7 @@ export default {
       let nextKeyIndex = arr.findIndex(item => {
         return item.key === nextKey
       })
+      // eslint-disable-next-line
       keyIndex < nextKeyIndex ? nextKeyIndex-- : nextKeyIndex
       this._sortDrag(arr, keyIndex, nextKeyIndex)
     }
