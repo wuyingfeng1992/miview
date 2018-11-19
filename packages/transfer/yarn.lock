@@ -6,8 +6,8 @@ sortablejs@^1.7.0:
   version "1.7.0"
   resolved "http://registry.npm.taobao.org/sortablejs/download/sortablejs-1.7.0.tgz#80a2b2370abd568e1cec8c271131ef30a904fa28"
 
-vuedraggable@2.15.0:
-  version "2.15.0"
-  resolved "http://registry.npm.taobao.org/vuedraggable/download/vuedraggable-2.15.0.tgz#3526adee924bd22b478a01b70c0a34dfc9cbbb4f"
+vuedraggable@^2.16.0:
+  version "2.16.0"
+  resolved "http://registry.npm.taobao.org/vuedraggable/download/vuedraggable-2.16.0.tgz#52127081a2adb3de5fabd214d404ff3eee63575a"
   dependencies:
     sortablejs "^1.7.0"

@@ -256,7 +256,6 @@ export default {
 
     // 新增拖拽函数方法
     getComponentData () {
-      console.log('1111')
       return {
         on: {
           change: this.handleChange,
@@ -280,7 +279,7 @@ export default {
       let data = this.data.map(item => {
         return item.key
       })
-      this.$emit('dragSort', data)
+      // this.$emit('dragSort', data) // 这句代码影响到，选中checkbox
     },
 
     // 拖动后元素排序
@@ -288,7 +287,7 @@ export default {
       let item = arr[oldIndex]
       arr.splice(oldIndex, 1)
       arr.splice(newIndex, 0, item)
-      console.log('_sortDrag: ', arr);
+      // console.log('_sortDrag: ', arr);
     },
 
     // 搜索后拖拽排序

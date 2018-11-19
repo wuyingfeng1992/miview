@@ -31,8 +31,15 @@ export default {
     };
     return {
       data: generateData(),
-      selectedCourseId: []
+      selectedCourseId: [1, 3, 5, 7]
     };
+  },
+  watch: {
+    selectedCourseId: {
+      handler(val) {
+        console.log('selectedCourseId: ', val)
+      }
+    }
   },
   methods: {
     renderFunc (h, option) {

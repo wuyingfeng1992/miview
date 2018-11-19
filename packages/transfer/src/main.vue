@@ -229,7 +229,7 @@ export default {
 
     // 新增拖拽回调方法
     dragSort (data) {
-      this.$emit('input', data)
+      // this.$emit('input', data)
       console.log('dragSort: ', data)
       // this.$emit('change', data, 'dragSort')
     }
