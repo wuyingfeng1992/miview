@@ -19,6 +19,6 @@ module.exports = {
         corejs: 2
       }
     ],
-    '@vue/transform-vue-jsx'
+    'transform-vue-jsx'
   ]
 }

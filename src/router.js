@@ -14,25 +14,33 @@ export default new Router({
       path: '/toast',
       name: 'toast',
       // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
+      // this generates a separate chunk (toast.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/ToastExample.vue')
+      component: () => import(/* webpackChunkName: "toast" */ './views/ToastExample.vue')
     },
     {
       path: '/table',
       name: 'table',
       // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
+      // this generates a separate chunk (table.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/TableExample.vue')
+      component: () => import(/* webpackChunkName: "table" */ './views/TableExample.vue')
     },
     {
       path: '/transfer',
       name: 'transfer',
       // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
+      // this generates a separate chunk (transfer.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/TransferExample.vue')
+      component: () => import(/* webpackChunkName: "transfer" */ './views/TransferExample.vue')
+    },
+    {
+      path: '/pdf-preview',
+      name: 'pdf-preview',
+      // route level code-splitting
+      // this generates a separate chunk (pdf-preview.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import(/* webpackChunkName: "pdf-preview" */ './views/PdfPreviewExample.vue')
     }
   ]
 })
