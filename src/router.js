@@ -41,6 +41,14 @@ export default new Router({
       // this generates a separate chunk (pdf-preview.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import(/* webpackChunkName: "pdf-preview" */ './views/PdfPreviewExample.vue')
+    },
+    {
+      path: '/dialog',
+      name: 'dialog',
+      // route level code-splitting
+      // this generates a separate chunk (dialog.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import(/* webpackChunkName: "dialog" */ './views/DialogExample.vue')
     }
   ]
 })

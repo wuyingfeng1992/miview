@@ -1,5 +1,5 @@
 <template>
-  <el-dialog ref="elDialog" :visible.sync="isShow" v-if="!destroyedWhenClose || isShow" :width="setWidth" :class="['i-dialog', customClass, modeClass]" @close="handleDialogClose" :close-on-click-modal="closeOnClickModal" :close-on-press-escape="closeOnPressEscape" :before-close="closeBefore" :title="title" :show-close="showClose" :modal="getModal" top="0" :append-to-body="appendToBody">
+  <el-dialog ref="elDialog" :visible.sync="isShow" v-if="!destroyedWhenClose || isShow" :width="setWidth" :class="['i-dialog', customClass, modeClass]" @close="handleDialogClose" :close-on-click-modal="closeOnClickModal" :close-on-press-escape="closeOnPressEscape" :before-close="closeBefore" :title="title" :show-close="showClose" :modal="getModal" top="0" :append-to-body="appendToBody" v-drag>
     <div class="customBody">
       <slot></slot>
     </div>
@@ -63,6 +63,11 @@ export default {
       }
     }
   },
+  watch: {
+    value (value) {
+      this.isShow = value
+    }
+  },
   computed: {
     modeClass () {
       return this.mode === 'popup' && 'popup'
@@ -77,6 +82,7 @@ export default {
       } else {
         width = this.width || this.sizeMap[this.size]
       }
+      return width
     }
   },
   methods: {
@@ -90,6 +96,22 @@ export default {
         done()
         this.$emit('input', false)
       }
+    },
+    handleDialogClose () {
+      this.$emit('input', false)
+      this.$emit('close')
+    },
+    done () {
+      this.handleDialogClose()
+    },
+    setDialogAttribute (vm) { },
+    handleCancel () {
+      this.handleDialogClose()
+      this.$emit('cancel')
+    },
+    handleConfirm () {
+      this.handleDialogClose()
+      this.$emit('confirm')
     }
   }
 }

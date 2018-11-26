@@ -4,6 +4,9 @@ import router from './router'
 import store from './store'
 import './plugins/element.js'
 
+// 引入指令
+import './directives/drag'
+
 Vue.config.productionTip = false
 
 new Vue({

@@ -5,6 +5,7 @@
       <router-link to="/table" class="btn">table</router-link>
       <router-link to="/transfer" class="btn">transfer</router-link>
       <router-link to="/pdf-preview" class="btn">pdf-preview</router-link>
+      <router-link to="/dialog" class="btn">dialog</router-link>
       <router-view class="main"></router-view>
     </div>
   </div>
