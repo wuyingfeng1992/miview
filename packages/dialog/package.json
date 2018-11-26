@@ -1,14 +1,10 @@
 {
-  "name": "pdf-preview",
+  "name": "dialog",
   "version": "1.0.0",
   "license": "MIT",
   "main": "lib/index.min.js",
   "module": "index.js",
   "scripts": {
     "build": "rimraf lib && webpack --config ../../build/webpack.umd.js"
-  },
-  "dependencies": {
-    "pdfjs-dist": "^2.0.943",
-    "pdfobject": "^2.1.1"
   }
 }
