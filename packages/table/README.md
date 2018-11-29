@@ -17,6 +17,7 @@ lerna add @element-ui-extends/webpack-build-scripts --scope=@element-ui-extends/
 	isSelect: 是否显示勾选框(true or false)
 	isIndex: 是否显示索引列(true or false)
 	fixedHeight: 固定高度
+	pagination: 表格分页信息
 	@sub param
 		operate: 是否使用template模板(true or false)
 		name: 对应列名
@@ -25,6 +26,7 @@ lerna add @element-ui-extends/webpack-build-scripts --scope=@element-ui-extends/
 		minWidth: 最小宽度
 		fixed: 是否固定列(left or right)
 		sortable: 是否启用排序(true or false or 'custom'=>服务器排序)
+		renderHeader: 定制表头
 @method:
 	cellClick: 表格点击
 	sortChange: 排序

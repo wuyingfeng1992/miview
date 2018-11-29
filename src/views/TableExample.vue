@@ -1,6 +1,6 @@
 <template>
-  <div class="about">
-    <i-table :tableData="tableData" :tableKey="tableKey">
+  <div class="table">
+    <i-table :tableData="tableData" :tableKey="tableKey" :is-expand="true" :is-expand-one="true" :is-index="true" :is-select="true">
       <template slot="date" slot-scope="scope">
         <i class="el-icon-time"></i>
         <span style="margin-left: 10px;">{{scope.row.date | formatDate}}</span>
@@ -48,8 +48,20 @@ export default {
       tableKey: [
         { name: '日期', value: 'date', operate: true },
         { name: '姓名', value: 'name', operate: true },
-        { name: '地址', value: 'address', operate: false }
+        { name: '地址', value: 'address', operate: false, renderHeader: this.renderHeader }
       ]
+    }
+  },
+  methods: {
+    renderHeader (h, { column, $index }) { // 原始数据表格，休息日天数标签生成函数
+      return (
+        <div>
+          <span>地址</span>
+          <el-tooltip class="item" effect="light" content="该用户目前所处的住址" placement="bottom-start">
+            <i class="el-icon-info table-msg" />
+          </el-tooltip>
+        </div>
+      );
     }
   },
   filters: {
@@ -63,3 +75,13 @@ export default {
   }
 }
 </script>
+<style lang="scss" scoped>
+.table {
+  /deep/ {
+    .table-msg  {
+      margin-left: 5px;
+      color: red;
+    }
+  }
+}
+</style>

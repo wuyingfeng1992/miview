@@ -1,6 +1,6 @@
 <template>
   <div class="i-table">
-    <el-table :data="tableData" ref="table" :stripe="true" :height="fixedHeight">
+    <el-table class="table-box" :data="tableData" ref="table" :stripe="true" :height="fixedHeight" @cell-click="cellClick" @sort-change="sortChange" @selection-change="handleSelectionChange" @expand-change="handleExpandRow">
       <!-- expand -->
       <el-table-column v-if="isExpand" type="expand">
         <template slot-scope="scope">
@@ -12,18 +12,22 @@
       <el-table-column v-if="isSelect" type="selection" width="60" align="center"></el-table-column>
 
       <!-- index -->
-      <el-table-column label="isIndex" type="index" width="50" align="center"></el-table-column>
+      <el-table-column label="序号" v-if="isIndex" type="index" width="50" align="center"></el-table-column>
 
       <!-- 简单的列(table-head) -->
-      <el-table-column v-for="(item, key) in tableKey" v-if="!item.operate" :key="key" align="center" :prop="item.value" :label="item.name" :width="item.width" :min-width="item.minWidth" :fixed="item.isFixed" :sortable="item.sortable" show-overflow-tooltip></el-table-column>
+      <el-table-column v-for="(item, key) in tableKey" v-if="!item.operate" :key="key" align="center" :prop="item.value" :label="item.name" :width="item.width" :min-width="item.minWidth" :fixed="item.isFixed" :sortable="item.sortable" :render-header="item.renderHeader" show-overflow-tooltip></el-table-column>
       <!-- 自定义的列 (operate)-->
-      <el-table-column v-else align="center" :prop="item.value" :label="item.name" :width="item.width" :min-width="item.minWidth" :fixed="item.isFixed" :sortable="item.sortable">
+      <el-table-column v-else align="center" :prop="item.value" :label="item.name" :width="item.width" :min-width="item.minWidth" :fixed="item.isFixed" :sortable="item.sortable" :render-header="item.renderHeader">
         <template slot-scope="scope">
           <!-- 对应slot name -->
           <slot :name="item.value" :$index="scope.$index" :row="scope.row"></slot>
         </template>
       </el-table-column>
     </el-table>
+    <div class="pagination-box" v-if="pagination.show">
+      <el-pagination @size-change="sizeChange" @current-change="currentChange" :current-page="pagination.currentPage" layout="total, sizes, prev, pager, next, jumper" :page-sizes="[10, 20, 50, 100, 200]" :page-size="pagination.pageSize" :total="pagination.total">
+      </el-pagination>
+    </div>
   </div>
 </template>
 
@@ -58,6 +62,16 @@ export default {
     },
     fixedHeight: { // 固定高度
       type: [Number, String]
+    },
+    pagination: { // 分页信息
+      type: Object,
+      default: () => ({
+        show: true, // 是否展示分页组件
+        currentPage: 1,
+        pageSize: 10,
+        total: 0,
+        layout: 'total, sizes, prev, pager, next, jumper'
+      })
     }
   },
   methods: {
@@ -75,13 +89,28 @@ export default {
         this.$refs.table.store.states.expandRows = expandRows.length !== 0 ? [row] : [];
       }
       this.$emit('handleExpandRow')
+    },
+    sizeChange (e) {
+      this.$emit('size-change', e);
+    },
+    currentChange (e) {
+      this.$emit('current-change', e);
     }
   }
 }
 </script>
 
-<style scoped>
-.i-table .cell > span{
-  word-break:normal;
+<style lang="scss" scoped>
+.i-table {
+  /deep/ {
+    .cell > span{
+      word-break:normal;
+    }
+    .pagination-box {
+      margin-top: 12px;
+      text-align: right;
+      margin-right: 36px;
+    }
+  }
 }
 </style>
