@@ -1,0 +1,12 @@
+{
+  "name": "select-area",
+  "version": "0.0.1",
+  "author": "ly2011",
+  "license": "Apache-2.0",
+  "private": true,
+  "main": "lib/index.min.js",
+  "module": "index.js",
+  "scripts": {
+    "build": "rimraf lib && webpack --config ../../build/webpack.umd.js"
+  }
+}

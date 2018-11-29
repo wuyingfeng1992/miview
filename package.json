@@ -24,6 +24,7 @@
     "@babel/runtime-corejs2": "^7.1.5",
     "@commitlint/cli": "^7.2.1",
     "@commitlint/config-conventional": "^7.1.2",
+    "area-data": "^5.0.6",
     "babel-eslint": "^10.0.1",
     "babel-helper-vue-jsx-merge-props": "^2.0.3",
     "babel-loader": "^8.0.4",

@@ -49,6 +49,14 @@ export default new Router({
       // this generates a separate chunk (dialog.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import(/* webpackChunkName: "dialog" */ './views/DialogExample.vue')
+    },
+    {
+      path: '/select-area',
+      name: 'select-area',
+      // route level code-splitting
+      // this generates a separate chunk (select-area.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import(/* webpackChunkName: "select-area" */ './views/SelectAreaExample.vue')
     }
   ]
 })

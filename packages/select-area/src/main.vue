@@ -43,7 +43,7 @@ export default {
       type: Boolean,
       default: false
     },
-    data: {
+    data: { // 所有城市的数据
       type: Object,
       required: true
     },
@@ -99,10 +99,139 @@ export default {
       }
     }
   },
+  created () {
+    if (Array.isArray(this.value) && this.value.length === this.level + 1) {
+      this.beforeSetDefault()
+      this.setDefaultValue()
+    }
+
+    if (Array.isArray(this.value) && this.value.length && this.value.length !== this.level + 1) {
+      this.$message.warning('设置的默认值和 level 值不匹配')
+    }
+  },
   methods: {
-    provinceChange () { },
-    cityChange () { },
-    areaChange () { }
+    provinceChange (val, isEqual) {
+      if (this.level === 0) {
+        this.selectChange()
+      } else if (this.level >= 1) {
+        this.citys = this.data[val]
+        if (!this.citys) {
+          this.citys = {
+            [this.curProvinceCode]: this.curProvince
+          }
+          if (!this.disableLinkage) {
+            this.curCity = this.curProvince
+            this.curCityCode = this.curCityCode
+          }
+          return
+        }
+
+        let curCity = Object.values(this.citys)[0]
+        let curCityCode = Object.keys(this.citys)[0]
+
+        // if (this.defaults[1]) {
+
+        // }
+
+        if (!this.disableLinkage) {
+          this.curCity = curCity
+          this.curCityCode = curCityCode
+        } else if (!isEqual) {
+          this.curCity = ''
+          this.curCityCode = ''
+          this.curArea = ''
+          this.curAreaCode = ''
+          this.selectChange()
+        }
+      }
+    },
+    cityChange (val, isEqual) {
+      if (this.level === 1) {
+        this.selectChange()
+      } else if (this.level >= 2) {
+        this.areas = this.data[val]
+
+        let curArea = Object.values(this.areas)[0]
+        let curAreaCode = Object.keys(this.areas)[0]
+
+        if (!this.disableLinkage) {
+          this.curArea = curArea
+          this.curAreaCode = curAreaCode
+        } else if (!isEqual) {
+          this.curArea = ''
+          this.curAreaCode = ''
+          this.selectChange()
+        }
+      }
+    },
+    areaChange (val) {
+      this.curAreaCode = val
+      this.selectChange()
+    },
+    getAreaCode () {
+      const codesMap = {
+        0: [this.curProvinceCode],
+        1: [this.curProvinceCode, this.curProvinceCode === '710000' ? this.curProvinceCode : this.curCityCode],
+        // fix #32 710000是台湾省
+        2: [this.curProvinceCode, this.curProvinceCode === '710000' ? this.curProvinceCode : this.curCityCode, this.curAreaCode]
+      }
+      const codes = codesMap[this.level]
+      return codes
+    },
+    getAreaText () {
+      const textsMap = {
+        0: [this.curProvince],
+        // fix #32 710000是台湾省
+        1: [this.curProvince, this.curProvinceCode === '710000' ? this.curProvince : this.curCity],
+        2: [this.curProvince, this.curProvinceCode === '710000' ? this.curProvince : this.curCity, this.curArea]
+      }
+      const texts = textsMap[this.level]
+      return texts
+    },
+    getAreaCodeAndText () {
+      const cityCode = this.curProvinceCode === '710000' ? this.curProvinceCode : this.curCityCode;
+      const cityText = this.curProvinceCode === '710000' ? this.curProvince : this.curCity;
+      const textCodesMap = {
+        0: [{ [this.curProvinceCode]: this.curProvince }],
+        1: [{ [this.curProvinceCode]: this.curProvinceCode }, { [cityCode]: cityText }],
+        2: [{ [this.curProvinceCode]: this.curProvince }, { [cityCode]: cityText }, {
+          [this.curAreaCode]: this.curArea
+        }]
+      }
+
+      const textCodes = textCodesMap[this.level]
+      return textCodes
+    },
+    // 选择数据
+    selectChange () {
+      this.isSetDefault = true
+      const areaMap = {
+        code: this.getAreaCode(),
+        text: this.getAreaText(),
+        all: this.getAreaCodeAndText()
+      }
+      const res = areaMap[this.type]
+      this.$emit('input', res)
+      this.$emit('change', res)
+    },
+    beforeSetDefault () {
+      // 映射默认值，避免直接更改props
+      this.defaults = [].concat(this.value)
+      this.isCode = true
+      this.isSetDefault = true
+    },
+    setDefaultValue () {
+      let provinceCode = ''
+      if (this.isCode) {
+        provinceCode = this.defaults[0]
+      }
+      this.curProvinceCode = provinceCode
+      // 还原默认值，避免用户选择出错
+      this.$nextTick(() => {
+        this.defaults = []
+        this.isSetDefault = false
+      })
+    }
   }
 }
 </script>
