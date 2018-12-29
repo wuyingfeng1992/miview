@@ -1,12 +1,34 @@
 <template>
   <div id="app">
     <div class="page">
-      <router-link to="/toast" class="btn">toast</router-link>
-      <router-link to="/table" class="btn">table</router-link>
-      <router-link to="/transfer" class="btn">transfer</router-link>
-      <router-link to="/pdf-preview" class="btn">pdf-preview</router-link>
-      <router-link to="/dialog" class="btn">dialog</router-link>
-      <router-link to="/select-area" class="btn">select-area</router-link>
+      <router-link
+        to="/toast"
+        class="btn"
+      >toast</router-link>
+      <router-link
+        to="/table"
+        class="btn"
+      >table</router-link>
+      <router-link
+        to="/transfer"
+        class="btn"
+      >transfer</router-link>
+      <router-link
+        to="/pdf-preview"
+        class="btn"
+      >pdf-preview</router-link>
+      <router-link
+        to="/dialog"
+        class="btn"
+      >dialog</router-link>
+      <router-link
+        to="/select-area"
+        class="btn"
+      >select-area</router-link>
+      <router-link
+        to="/tree-select"
+        class="btn"
+      >tree-select</router-link>
       <router-view class="main"></router-view>
     </div>
   </div>
