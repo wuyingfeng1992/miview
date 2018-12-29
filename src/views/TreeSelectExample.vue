@@ -1,6 +1,9 @@
 <template>
   <div class="tree-select-example">
-    <i-tree-select :data="data" />
+    <i-tree-select
+      :data="data"
+      :show-checkbox="true"
+    />
   </div>
 </template>
 
@@ -17,7 +20,7 @@ export default {
         children: [{
           label: '二级 1-1',
           children: [{
-            label: '三级 1-1-1'
+            label: '三级 1-1-1 look up look up look up look up look up look up look up look up look up'
           }]
         }]
       }, {
