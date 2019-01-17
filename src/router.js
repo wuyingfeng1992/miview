@@ -47,6 +47,11 @@ export default new Router({
       path: '/tree-select',
       name: 'tree-select',
       component: () => import(/* webpackChunkName: "tree-select" */ './views/TreeSelectExample.vue')
+    },
+    {
+      path: '/select',
+      name: 'select',
+      component: () => import(/* webpackChunkName: "select" */ './views/SelectExample.vue')
     }
   ]
 })

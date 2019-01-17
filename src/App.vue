@@ -29,6 +29,10 @@
         to="/tree-select"
         class="btn"
       >tree-select</router-link>
+      <router-link
+        to="/select"
+        class="btn"
+      >select</router-link>
       <router-view class="main"></router-view>
     </div>
   </div>
