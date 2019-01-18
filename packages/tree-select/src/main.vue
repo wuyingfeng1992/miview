@@ -50,7 +50,7 @@ export default {
     },
     popoverVisibleArrow: { // 是否显示 Tooltip 箭头
       type: Boolean,
-      default: true
+      default: false
     },
     expandOnClickNode: { // 是否在点击节点的时候展开或者收缩节点
       type: Boolean,
