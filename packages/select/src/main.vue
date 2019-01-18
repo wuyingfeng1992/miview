@@ -37,8 +37,10 @@
           v-model="selectedValue"
           :multiple="multiple"
           :placeholder="placeholder"
+          v-bind="$attrs"
           @change="handleChangeSelectBox"
           @visible-change="handleVisibleChange"
+          :remote-method="remoteMethod"
           popper-class="select-box-popover"
           ref="selectBoxRef"
         >
@@ -96,6 +98,12 @@ export default {
       type: String,
       default: '220'
     },
+    defaultSelectedValue: { // 默认下拉框选中的值
+      type: [String, Array],
+      default: () => {
+        return this.multiple ? [] : ''
+      }
+    }
   },
   computed: {
     inputBoxStyle () {
@@ -125,22 +133,26 @@ export default {
       handler (val) {
         this.updateInputWidth()
       }
-    },
+    }
   },
   data () {
     return {
-      selectedValue: this.multiple ? [] : '', // 选中的select值
+      selectedValue: this.defaultSelectedValue ? this.defaultSelectedValue : this.multiple ? [] : '', // 选中的select值
       selectedFullValue: this.multiple ? [] : '', // 选中值的select集合(包括value和key)
-      isShowSelect: false, // 是否展示select下拉框
+      isShowSelect: !this.custom, // 是否展示select下拉框
       inputWidth: this.width
     }
   },
   mounted () {
     this.updateInputWidth()
-    document.addEventListener('click', this.handleSelectClose, false)
+    if (this.custom) {
+      document.addEventListener('click', this.handleSelectClose, false)
+    }
   },
   destroyed () {
-    document.removeEventListener('click', this.handleSelectClose, false)
+    if (this.custom) {
+      document.removeEventListener('click', this.handleSelectClose, false)
+    }
   },
   methods: {
     updateInputWidth () {
@@ -161,12 +173,17 @@ export default {
     },
     handleVisibleChange (visible) { // 更改select下拉框的状态(展开/收起)
       // console.log('handleVisibleChange: ', visible);
-      if (!visible) {
+      this.$emit('visible-change', visible)
+      if (this.custom && !visible) {
         this.isShowSelect = false
       }
     },
-    handleChangeSelectBox () {
-      console.log('selectedValue: ', this.selectedValue);
+    handleChangeSelectBox (val) {
+      this.$emit('change', val)
+      // console.log('selectedValue: ', this.selectedValue);
+    },
+    remoteMethod (query) {
+      this.$emit('remote-method', query)
     }
   }
 }
