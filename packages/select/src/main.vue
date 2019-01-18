@@ -10,22 +10,28 @@
         :style="inputBoxStyle"
       >
         <template v-if="custom && multiple && !isShowSelect">
-          <label
-            v-if="selectedFullValue.length > 1"
-            class="inputLabel"
+          <el-tooltip
+            placement="top"
+            :disabled="!selectedLabelVisible"
           >
-            {{selectedFullValue[0][selectLabelKey]}} ( +{{selectedFullValue.length - 1}}个)
-          </label>
-          <label
-            v-else-if="selectedFullValue.length === 1"
-            class="inputLabel"
-          >
-            {{selectedFullValue[0][selectLabelKey]}}
-          </label>
-          <label
-            v-else
-            class="inputLabel"
-          >{{inputLabel}}</label>
+            <div slot="content">{{selectedLabel}}</div>
+            <label
+              v-if="selectedFullValue.length > 1"
+              class="inputLabel"
+            >
+              {{selectedFullValue[0][selectLabelKey]}} ( +{{selectedFullValue.length - 1}}个)
+            </label>
+            <label
+              v-else-if="selectedFullValue.length === 1"
+              class="inputLabel"
+            >
+              {{selectedFullValue[0][selectLabelKey]}}
+            </label>
+            <label
+              v-else
+              class="inputLabel"
+            >{{inputLabel}}</label>
+          </el-tooltip>
         </template>
       </div>
       <!-- 点击展示时的状态/没有定制多选时的情况 -->
@@ -101,7 +107,10 @@ export default {
     defaultSelectedValue: { // 默认下拉框选中的值
       type: [String, Array],
       default: () => {
-        return this.multiple ? [] : ''
+        // TODO: 这里有坑，读取this.X会报错
+        // console.log('this: ', this);
+        // return this.multiple ? [] : ''
+        return ''
       }
     }
   },
@@ -110,6 +119,16 @@ export default {
       return {
         width: this.inputWidth && this.inputWidth.includes('px') ? this.inputWidth : this.inputWidth + 'px'
       }
+    },
+    selectedLabel () {
+      if (this.custom) {
+        return this.selectedFullValue.map(item => item[this.selectLabelKey]).join(',')
+      }
+      return ''
+    },
+    selectedLabelVisible () { // 是否展示tooltip
+      // console.log('selectedLabelVisible: ', !!this.selectedLabel);
+      return !!this.selectedLabel
     }
   },
   watch: {

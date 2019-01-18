@@ -8,7 +8,6 @@
       remote
       :reserve-keyword="true"
       :loading="loading"
-      :defaultSelectedValue="selectedValue"
       @visible-change="handleVisibleChange"
       @change="handleChangeSelect"
       @remote-method="remoteMethod"

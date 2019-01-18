@@ -1,15 +1,34 @@
 <template>
   <div class="table">
-    <i-table :tableData="tableData" :tableKey="tableKey" :is-expand="true" :is-expand-one="true" :is-index="true" :is-select="true">
-      <template slot="date" slot-scope="scope">
+    <i-table
+      :tableData="tableData"
+      :tableKey="tableKey"
+      :is-expand="true"
+      :is-expand-one="true"
+      :is-index="true"
+      :is-select="true"
+    >
+      <template
+        slot="date"
+        slot-scope="scope"
+      >
         <i class="el-icon-time"></i>
         <span style="margin-left: 10px;">{{scope.row.date | formatDate}}</span>
       </template>
-      <template slot="name" slot-scope="scope">
-        <el-popover placement="top" trigger="hover">
+      <template
+        slot="name"
+        slot-scope="scope"
+      >
+        <el-popover
+          placement="top"
+          trigger="hover"
+        >
           <p>姓名：{{scope.row.name}}</p>
           <p>住址：{{scope.row.address}}</p>
-          <div slot="reference" class="name-wrapper">
+          <div
+            slot="reference"
+            class="name-wrapper"
+          >
             <el-tag size="medium">{{scope.row.name}}</el-tag>
           </div>
         </el-popover>
@@ -31,7 +50,7 @@ export default {
       tableData: [{
         date: '2016-05-02',
         name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄'
+        address: '上海市普陀区金沙江路 1518 弄, 上海市普陀区金沙江路 1518 弄, 上海市普陀区金沙江路 1518 弄, 上海市普陀区金沙江路 1518 弄, 上海市普陀区金沙江路 1518 弄'
       }, {
         date: '2016-05-04',
         name: '王小虎',
@@ -78,7 +97,7 @@ export default {
 <style lang="scss" scoped>
 .table {
   /deep/ {
-    .table-msg  {
+    .table-msg {
       margin-left: 5px;
       color: red;
     }
