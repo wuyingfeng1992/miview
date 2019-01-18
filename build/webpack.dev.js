@@ -24,6 +24,7 @@ module.exports = merge(baseConfig('development'), {
     contentBase: path.resolve(__dirname, '../src'),
     publicPath: '/',
     hot: true,
+    hotOnly: true,
     clientLogLevel: 'none',
     quiet: true,
     port: 9999,

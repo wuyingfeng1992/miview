@@ -33,6 +33,14 @@
         to="/select"
         class="btn"
       >select</router-link>
+      <router-link
+        to="/simple-img-preview"
+        class="btn"
+      >simple-img-preview</router-link>
+      <router-link
+        to="/paste-select"
+        class="btn"
+      >paste-select</router-link>
       <router-view class="main"></router-view>
     </div>
   </div>

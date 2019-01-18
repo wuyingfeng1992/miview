@@ -5,6 +5,19 @@ import Home from './views/Home.vue'
 
 Vue.use(Router)
 
+// function generatesRoutes (routes = []) {
+//   const routesConfig = []
+//   if (Array.isArray(routes)) {
+//     routes.forEach(route => {
+//       const item = {
+//         path: `/${route}`,
+//         name: route,
+//         component: () => import(/* webpackChunkName: "toast" */ './views/ToastExample.vue')
+//       }
+//     })
+//   }
+// }
+
 export default new Router({
   mode: 'hash',
   base: process.env.BASE_URL,
@@ -52,6 +65,16 @@ export default new Router({
       path: '/select',
       name: 'select',
       component: () => import(/* webpackChunkName: "select" */ './views/SelectExample.vue')
+    },
+    {
+      path: '/simple-img-preview',
+      name: 'simple-img-preview',
+      component: () => import(/* webpackChunkName: "select" */ './views/SimpleImgPreviewExample.vue')
+    },
+    {
+      path: '/paste-select',
+      name: 'paste-select',
+      component: () => import(/* webpackChunkName: "paste-select" */ './views/PasteSelectExample.vue')
     }
   ]
 })
