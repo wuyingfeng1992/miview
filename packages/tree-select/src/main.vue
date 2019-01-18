@@ -15,6 +15,7 @@
       <el-tree
         :data="data"
         :props="defaultProps"
+        :check-on-click-node="checkOnClickNode"
         :expand-on-click-node="expandOnClickNode"
         :default-expand-all="defaultExpandAll"
         :highlight-current="highlightCurrentTree"
@@ -55,6 +56,10 @@ export default {
       type: Boolean,
       default: true
     },
+    checkOnClickNode: { // 是否在点击节点的时候选中节点
+      type: Boolean,
+      default: false
+    },
     defaultExpandAll: { // 是否默认展开所有节点
       type: Boolean,
       default: false
@@ -65,7 +70,7 @@ export default {
     },
     accordionTree: { // 是否每次只打开一个同级树节点展开
       type: Boolean,
-      default: true
+      default: false
     },
     showCheckbox: { // 节点是否可被选择
       type: Boolean,
@@ -100,7 +105,7 @@ export default {
   methods: {
     handleNodeClick (data) {
       this.selectedNodeLabel = data.label
-      this.$refs.popoverTree.handleBlur()
+      // this.$refs.popoverTree.handleBlur()
     },
     // 节点收缩的时候触发
     handleNodeCollapse (data, node) {

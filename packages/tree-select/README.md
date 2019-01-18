@@ -8,6 +8,7 @@
     <i-tree-select
       :data="data"
       :show-checkbox="true"
+      :check-on-click-node="true"
     />
   </div>
 </template>
