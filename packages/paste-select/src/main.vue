@@ -126,6 +126,7 @@
 <script>
 import { addResizeListener, removeResizeListener } from 'element-ui/src/utils/resize-event';
 export default {
+  name: 'MPasteSelect',
   props: {
     params: {
       type: Object,
@@ -321,7 +322,9 @@ export default {
     },
 
     resetInputWidth () {
-      this.inputWidth = this.$refs.referenceSelectBox.$el.getBoundingClientRect().width;
+      if (this.$refs.referenceSelectBox && this.$refs.referenceSelectBox.$el) {
+        this.inputWidth = this.$refs.referenceSelectBox.$el.getBoundingClientRect().width;
+      }
     },
     handleResize () {
       this.resetInputWidth();

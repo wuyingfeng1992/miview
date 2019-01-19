@@ -24,13 +24,13 @@
 </template>
 
 <script>
-import Toast from '../../packages/toast/index'
+// import Toast from '../../packages/toast/index'
 
 export default {
   name: 'ToastExample',
-  components: {
-    Toast
-  },
+  // components: {
+  //   Toast
+  // },
   data () {
     return {
       options: [

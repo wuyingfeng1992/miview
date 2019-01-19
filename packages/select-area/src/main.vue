@@ -1,20 +1,49 @@
 <template>
   <div class="select-area-wrap">
-    <el-select v-model="curProvinceCode" filterable :placeholder="placeholders[0] ? placeholders[0]: '请选择'">
-      <el-option v-for="(val,  key) in provinces" :key="key" :label="val" :value="key"></el-option>
+    <el-select
+      v-model="curProvinceCode"
+      filterable
+      :placeholder="placeholders[0] ? placeholders[0]: '请选择'"
+    >
+      <el-option
+        v-for="(val,  key) in provinces"
+        :key="key"
+        :label="val"
+        :value="key"
+      ></el-option>
     </el-select>
-    <el-select v-if="level >= 1" v-model="curCityCode" filterable :placeholder="placeholders[1] ? placeholders[1]: '请选择'">
-      <el-option v-for="(val, key) in citys" :key="key" :label="val" :value="key"></el-option>
+    <el-select
+      v-if="level >= 1"
+      v-model="curCityCode"
+      filterable
+      :placeholder="placeholders[1] ? placeholders[1]: '请选择'"
+    >
+      <el-option
+        v-for="(val, key) in citys"
+        :key="key"
+        :label="val"
+        :value="key"
+      ></el-option>
     </el-select>
-    <el-select v-if="level >= 2" v-model="curAreaCode" filterable :placeholder="placeholders[2] ? placeholders[2]: '请选择'">
-      <el-option v-for="(val, key) in areas" :key="key" :label="val" :value="key"></el-option>
+    <el-select
+      v-if="level >= 2"
+      v-model="curAreaCode"
+      filterable
+      :placeholder="placeholders[2] ? placeholders[2]: '请选择'"
+    >
+      <el-option
+        v-for="(val, key) in areas"
+        :key="key"
+        :label="val"
+        :value="key"
+      ></el-option>
     </el-select>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'select-area',
+  name: 'MSelectArea',
   props: {
     value: { // 默认值
       type: Array,
@@ -237,5 +266,4 @@ export default {
 </script>
 
 <style>
-
 </style>

@@ -6,10 +6,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const baseConfig = require('./webpack.base.js')
 
+const resolve = function (dir) {
+  return path.resolve(__dirname, '..', dir)
+}
+
 module.exports = merge(baseConfig('development'), {
-  entry: './src/index.js',
+  entry: './examples/index.js',
   output: {
-    path: path.resolve(__dirname, '../dev'),
+    path: resolve('dist'),
     filename: 'bundle.js',
     publicPath: './'
   },
@@ -17,11 +21,13 @@ module.exports = merge(baseConfig('development'), {
     new FriendlyErrorsPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
-      template: 'src/index.html'
+      template: 'examples/index.html',
+      filename: 'index.html',
+      inject: true
     })
   ],
   devServer: {
-    contentBase: path.resolve(__dirname, '../src'),
+    contentBase: resolve('examples'),
     publicPath: '/',
     hot: true,
     hotOnly: true,

@@ -1,6 +1,6 @@
 <template>
   <div class="table">
-    <i-table
+    <m-table
       :tableData="tableData"
       :tableKey="tableKey"
       :is-expand="true"
@@ -33,18 +33,18 @@
           </div>
         </el-popover>
       </template>
-    </i-table>
+    </m-table>
   </div>
 </template>
 <script>
 import moment from 'moment'
-import Table from '../../packages/table/index'
+// import Table from '../../packages/table/index'
 
 export default {
   name: 'TableExample',
-  components: {
-    ITable: Table
-  },
+  // components: {
+  //   ITable: Table
+  // },
   data () {
     return {
       tableData: [{

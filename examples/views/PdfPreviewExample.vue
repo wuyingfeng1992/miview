@@ -1,9 +1,9 @@
 <script>
-import pdfPreview from '../../packages/pdf-preview/index'
+// import pdfPreview from '../../packages/pdf-preview/index'
 export default {
-  components: {
-    pdfPreview
-  },
+  // components: {
+  //   pdfPreview
+  // },
   data () {
     return {
       pdfUrl: '../assets/pdf/demo.pdf'
@@ -12,7 +12,7 @@ export default {
   render () {
     return (
       <div>
-        <pdf-preview url={this.pdfUrl} />
+        <m-pdf-preview url={this.pdfUrl} />
       </div>
     )
   }

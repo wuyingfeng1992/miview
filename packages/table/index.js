@@ -1,1 +1,8 @@
-export { default } from './src/main.vue'
+// export { default } from './src/main.vue'
+import Table from './src/main.vue'
+
+Table.install = function (Vue) {
+  Vue.component(Table.name, Table)
+}
+
+export default Table

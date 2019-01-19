@@ -1,6 +1,14 @@
 .DS_Store
+.cache
 node_modules
-/dist
+package-lock.json
+es
+lib
+dist
+docs/dist
+changelog.generated.md
+test/coverage
+vetur
 
 # local env files
 .env.local

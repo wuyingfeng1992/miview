@@ -4,7 +4,7 @@
       type="primary"
       @click="handlePreview"
     >预览图片</el-button>
-    <simple-img-preview
+    <m-simple-img-preview
       :visible.sync="previewVisible"
       :previewUrl="previewUrl"
     >
@@ -12,16 +12,16 @@
         :src="previewUrl"
         alt=""
       > -->
-    </simple-img-preview>
+    </m-simple-img-preview>
   </div>
 </template>
 
 <script>
-import SimpleImgPreview from '../../packages/simple-img-preview/index'
+// import SimpleImgPreview from '../../packages/simple-img-preview/index'
 export default {
-  components: {
-    SimpleImgPreview
-  },
+  // components: {
+  //   SimpleImgPreview
+  // },
   data () {
     return {
       previewVisible: false,

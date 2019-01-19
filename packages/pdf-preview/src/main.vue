@@ -1,5 +1,8 @@
 <template>
-  <div ref="pdf" class="pdf-wrapper"></div>
+  <div
+    ref="pdf"
+    class="pdf-wrapper"
+  ></div>
 </template>
 
 <script>
@@ -12,7 +15,7 @@
 import PdfObj from 'pdfobject'
 
 export default {
-  name: 'mi-pdf',
+  name: 'MPdfPreview',
   props: {
     url: {
       type: String,
@@ -45,10 +48,10 @@ export default {
 
 <style lang="scss" scoped>
 .pdf-wrapper {
-    &.pdfobject-container {
-      width: 100%;
-      height: 100%;
-      margin: auto;
-    }
+  &.pdfobject-container {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+  }
 }
 </style>

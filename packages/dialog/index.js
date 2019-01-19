@@ -1,1 +1,9 @@
-export { default } from './src/main.vue'
+// export { default } from './src/main.vue'
+
+import Dialog from './src/main.vue'
+
+Dialog.install = function (Vue) {
+  Vue.component(Dialog.name, Dialog)
+}
+
+export default Dialog

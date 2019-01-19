@@ -1,10 +1,38 @@
 <template>
-  <el-dialog ref="elDialog" :visible.sync="isShow" v-if="!destroyedWhenClose || isShow" :width="setWidth" :class="['i-dialog', customClass, modeClass]" @close="handleDialogClose" :close-on-click-modal="closeOnClickModal" :close-on-press-escape="closeOnPressEscape" :before-close="closeBefore" :title="title" :show-close="showClose" :modal="getModal" top="0" :append-to-body="appendToBody" v-drag>
+  <el-dialog
+    ref="elDialog"
+    :visible.sync="isShow"
+    v-if="!destroyedWhenClose || isShow"
+    :width="setWidth"
+    :class="['i-dialog', customClass, modeClass]"
+    @close="handleDialogClose"
+    :close-on-click-modal="closeOnClickModal"
+    :close-on-press-escape="closeOnPressEscape"
+    :before-close="closeBefore"
+    :title="title"
+    :show-close="showClose"
+    :modal="getModal"
+    top="0"
+    :append-to-body="appendToBody"
+    v-drag
+  >
     <div class="customBody">
       <slot></slot>
     </div>
-    <div v-if="toolbar && toolbar.length" slot="footer" class="dialog-footer">
-      <el-button v-for="(btn, idx) of toolbar" v-show="!btn.hide" :disabled="btn.disabled" :loading="btn.loading" :key="idx" :type="btn.type || 'primary'" @click="handleClick(btn)">
+    <div
+      v-if="toolbar && toolbar.length"
+      slot="footer"
+      class="dialog-footer"
+    >
+      <el-button
+        v-for="(btn, idx) of toolbar"
+        v-show="!btn.hide"
+        :disabled="btn.disabled"
+        :loading="btn.loading"
+        :key="idx"
+        :type="btn.type || 'primary'"
+        @click="handleClick(btn)"
+      >
         {{btn.text}}
       </el-button>
     </div>
@@ -13,7 +41,7 @@
 
 <script>
 export default {
-  name: 'iDialog',
+  name: 'MDialog',
   props: {
     mode: {
       type: String,
@@ -118,5 +146,4 @@ export default {
 </script>
 
 <style>
-
 </style>

@@ -38,7 +38,7 @@
 
 <script>
 export default {
-  name: 'i-tree-select',
+  name: 'MTreeSelect',
   props: {
     data: {
       type: Array,

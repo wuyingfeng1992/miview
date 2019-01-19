@@ -9,8 +9,8 @@ module.exports = {
   plugins: ['vue'],
   rules: {
     semi: 0,
-    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-console': 0,
+    'no-debugger': 0,
     'vue/html-self-closing': 0,
     'vue/html-closing-bracket-newline': 0,
     'vue/attribute-hyphenation': 0,
