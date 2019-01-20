@@ -4,10 +4,13 @@ import VueRouter from 'vue-router'
 import App from './DocsApp.vue'
 import routes from './router'
 import demoBlock from './components/demo-block.vue'
-import mview from '../../packages/index'
-
+// import mview from '../../packages/index'
+import './plugins/element.js'
+import './plugins/mview.js'
+// 引入指令
+import './directives/drag'
 Vue.component('demo-block', demoBlock)
-Vue.use(mview)
+// Vue.use(mview)
 Vue.use(VueRouter)
 
 let lang = 'zh-CN'

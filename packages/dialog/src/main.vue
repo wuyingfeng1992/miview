@@ -140,6 +140,25 @@ export default {
     handleConfirm () {
       this.handleDialogClose()
       this.$emit('confirm')
+    },
+    handleClick (btn) {
+      const { throttle, func } = btn
+
+      if (throttle) {
+        this.setLoadingBtn(btn, true)
+
+        func && func(this.done).then(() => {
+          this.setLoadingBtn(btn, false)
+        }).catch(() => {
+          this.setLoadingBtn(btn, false)
+        })
+      } else {
+        func && func(this.done)
+      }
+    },
+    /** 节流条件下设置按钮禁用属性 */
+    setLoadingBtn (btn, isLoading) {
+      this.$set(btn, 'loading', isLoading)
     }
   }
 }

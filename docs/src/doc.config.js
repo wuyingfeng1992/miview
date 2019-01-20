@@ -56,8 +56,8 @@ module.exports = {
             groupName: '基础组件',
             list: [
               {
-                path: '/button',
-                title: 'Button 按钮'
+                path: '/dialog',
+                title: 'Dialog 弹框'
               },
               {
                 path: '/cell',
