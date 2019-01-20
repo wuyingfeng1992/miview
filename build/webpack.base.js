@@ -35,26 +35,30 @@ const vueMarkdown = {
     }
     return source
   },
+  raw: true,
   use: [
-    [MarkdownItContainer, 'demo', {
-      validate: params => params.trim().match(/^demo\s*(.*)$/),
-      render: function (tokens, idx) {
+    [
+      MarkdownItContainer,
+      'demo',
+      {
+        validate: params => params.trim().match(/^demo\s*(.*)$/),
+        render: function (tokens, idx) {
+          var m = tokens[idx].info.trim().match(/^demo\s*(.*)$/)
 
-        var m = tokens[idx].info.trim().match(/^demo\s*(.*)$/);
+          if (tokens[idx].nesting === 1) {
+            var desc = tokens[idx + 2].content
+            const html = utils.convertHtml(striptags(tokens[idx + 1].content, 'script'))
+            // 移除描述，防止被添加到代码块
+            tokens[idx + 2].children = []
 
-        if (tokens[idx].nesting === 1) {
-          var desc = tokens[idx + 2].content;
-          const html = utils.convertHtml(striptags(tokens[idx + 1].content, 'script'))
-          // 移除描述，防止被添加到代码块
-          tokens[idx + 2].children = [];
-
-          return `<demo-block>
+            return `<demo-block>
                         <div slot="desc">${html}</div>
-                        <div slot="highlight">`;
+                        <div slot="highlight">`
+          }
+          return '</div></demo-block>\n'
         }
-        return '</div></demo-block>\n';
       }
-    }]
+    ]
   ]
 }
 
@@ -76,8 +80,9 @@ module.exports = mode => ({
           failOnError: mode === 'production',
           formatter: require('eslint-friendly-formatter')
         },
-        include: path.resolve(cwd),
-        exclude: /node_modules/
+        // include: path.resolve(cwd),
+        include: [resolve('examples')],
+        exclude: [/node_modules/]
       },
       {
         test: /\.js$/,
@@ -101,7 +106,7 @@ module.exports = mode => ({
             }
           }
         ],
-        include: [resolve('examples'), resolve('packages'), resolve('node_modules/element-ui')]
+        include: [resolve('examples'), resolve('packages'), resolve('docs'), resolve('node_modules/highlight.js'), resolve('node_modules/element-ui')]
       },
       {
         test: /\.scss$/,
@@ -126,7 +131,7 @@ module.exports = mode => ({
             loader: 'sass-loader'
           }
         ],
-        include: [resolve('examples'), resolve('packages'), resolve('node_modules/element-ui')]
+        include: [resolve('examples'), resolve('packages'), resolve('docs'), resolve('node_modules/highlight.js'),resolve('node_modules/element-ui')]
         // exclude: /node_modules/
       },
       // {
@@ -160,17 +165,30 @@ module.exports = mode => ({
       },
       {
         test: /\.md$/,
-        loader: 'vue-markdown-loader',
-        options: vueMarkdown
+        // loader: 'vue-markdown-loader',
+        use: [
+          {
+            loader: 'vue-loader'
+          },
+          {
+            loader: 'vue-markdown-loader/lib/markdown-compiler',
+            options: {
+              // raw: true
+              ...vueMarkdown
+            }
+          }
+        ]
+        // options: vueMarkdown
       }
     ]
   },
-  plugins: [new ProgressBarPlugin(),new VueLoaderPlugin()],
+  plugins: [new ProgressBarPlugin(), new VueLoaderPlugin()],
   resolve: {
     alias: {
-      'vue$': 'vue/dist/vue.esm.js',
+      vue$: 'vue/dist/vue.esm.js',
       '@': resolve('examples'),
-      assets: resolve('examples/assets')
+      assets: resolve('examples/assets'),
+      packages: resolve('packages')
     },
     extensions: ['.js', '.vue'],
     modules: ['node_modules']

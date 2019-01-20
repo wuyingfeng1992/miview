@@ -1,3 +1,4 @@
+/* 暂已废弃 */
 const path = require('path')
 const merge = require('webpack-merge')
 
