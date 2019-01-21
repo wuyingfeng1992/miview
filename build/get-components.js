@@ -2,7 +2,17 @@
 const fs = require('fs')
 const path = require('path')
 
-const excludes = ['index.js', 'index.less', 'style', 'styles', 'mixins', 'utils', 'directives', '.DS_Store']
+const excludes = [
+  'index.js',
+  'index.less',
+  'style',
+  'styles',
+  'mixins',
+  'utils',
+  'directives',
+  '.DS_Store',
+  'pdf-preview'
+]
 
 module.exports = function () {
   const dirs = fs.readdirSync(path.resolve(__dirname, '../packages'))

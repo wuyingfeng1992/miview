@@ -3,7 +3,6 @@
 import BackToTop from './BackToTop';
 import Dialog from './dialog';
 import PasteSelect from './paste-select';
-import PdfPreview from './pdf-preview';
 import Select from './select';
 import SelectArea from './select-area';
 import SimpleImgPreview from './simple-img-preview';
@@ -12,12 +11,11 @@ import Table from './table';
 import Toast from './toast';
 import Transfer from './transfer';
 import TreeSelect from './tree-select';
-const version = '0.2.1';
+const version = '0.2.3';
 const components = [
   BackToTop,
   Dialog,
   PasteSelect,
-  PdfPreview,
   Select,
   SelectArea,
   SimpleImgPreview,
@@ -42,7 +40,6 @@ export {
   BackToTop,
   Dialog,
   PasteSelect,
-  PdfPreview,
   Select,
   SelectArea,
   SimpleImgPreview,
