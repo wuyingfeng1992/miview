@@ -1,5 +1,5 @@
-// export { default } from './src/main.vue'
-import BackToTop from './src/main.vue'
+// export { default } from './src/main'
+import BackToTop from './src/main'
 
 BackToTop.install = function (Vue) {
   Vue.component(BackToTop.name, BackToTop)

@@ -1,6 +1,6 @@
-// export { default } from './src/main.vue'
+// export { default } from './src/main'
 
-import PasteSelect from './src/main.vue'
+import PasteSelect from './src/main'
 
 PasteSelect.install = function (Vue) {
   Vue.component(PasteSelect.name, PasteSelect)

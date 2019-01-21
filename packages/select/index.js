@@ -1,5 +1,5 @@
-// export { default } from './src/main.vue'
-import Select from './src/main.vue'
+// export { default } from './src/main'
+import Select from './src/main'
 
 Select.install = function (Vue) {
   Vue.component(Select.name, Select)

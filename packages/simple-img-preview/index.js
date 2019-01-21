@@ -1,5 +1,5 @@
-// export { default } from './src/main.vue'
-import SimpleImgPreview from './src/main.vue'
+// export { default } from './src/main'
+import SimpleImgPreview from './src/main'
 
 SimpleImgPreview.install = function (Vue) {
   Vue.component(SimpleImgPreview.name, SimpleImgPreview)

@@ -1,5 +1,5 @@
-// export { default } from './src/main.vue'
-import SvgIcon from './src/main.vue'
+// export { default } from './src/main'
+import SvgIcon from './src/main'
 
 SvgIcon.install = function (Vue) {
   Vue.component(SvgIcon.name, SvgIcon)

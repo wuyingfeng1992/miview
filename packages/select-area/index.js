@@ -1,6 +1,6 @@
-// export { default } from './src/main.vue'
+// export { default } from './src/main'
 
-import SelectArea from './src/main.vue'
+import SelectArea from './src/main'
 
 SelectArea.install = function (Vue) {
   Vue.component(SelectArea.name, SelectArea)

@@ -1,5 +1,5 @@
-// export { default } from './src/main.vue'
-import TreeSelect from './src/main.vue'
+// export { default } from './src/main'
+import TreeSelect from './src/main'
 
 TreeSelect.install = function (Vue) {
   Vue.component(TreeSelect.name, TreeSelect)
