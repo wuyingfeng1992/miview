@@ -8,7 +8,7 @@ import demoBlock from './components/demo-block.vue'
 import './plugins/element.js'
 import './plugins/mview.js'
 // 引入指令
-import './directives/drag'
+// import './directives/drag'
 Vue.component('demo-block', demoBlock)
 // Vue.use(mview)
 Vue.use(VueRouter)

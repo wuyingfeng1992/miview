@@ -40,8 +40,10 @@
 </template>
 
 <script>
+import Drag from '../../directives/drag.js'
 export default {
   name: 'MDialog',
+  directives: { Drag },
   props: {
     mode: {
       type: String,

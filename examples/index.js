@@ -7,7 +7,7 @@ import './plugins/element.js'
 import './plugins/mview.js'
 
 // 引入指令
-import './directives/drag'
+// import './directives/drag'
 
 Vue.config.productionTip = false
 
