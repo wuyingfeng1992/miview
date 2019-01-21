@@ -8,11 +8,11 @@
     @close="handleDialogClose"
     :close-on-click-modal="closeOnClickModal"
     :close-on-press-escape="closeOnPressEscape"
+    :center="center"
     :before-close="closeBefore"
     :title="title"
     :show-close="showClose"
     :modal="getModal"
-    top="0"
     :append-to-body="appendToBody"
     v-drag
   >
@@ -60,9 +60,16 @@ export default {
       type: Boolean,
       default: false
     },
+    center: {
+      type: Boolean,
+      default: false,
+    },
     beforeClose: Function,
     destroyedWhenClose: Boolean,
-    toolbar: Array,
+    toolbar: {
+      type: Array,
+      default: () => ([])
+    },
     modal: {
       type: Boolean,
       default: true

@@ -46,7 +46,7 @@ export default {
   height: auto;
   box-sizing: border-box;
   font-size: 14px;
-  background-color: #f7f7f7;
+  background-color: #f1f4f8;
   border: 1px solid #e2ecf4;
   border-top: none;
   pre code {

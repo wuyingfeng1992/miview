@@ -1,7 +1,8 @@
+/* demo-block样式 */
 section {
   color: #3f536e;
   font-size: 14px;
-  .demo-block{
+  .demo-block {
     padding: 32px;
     border: 1px solid #e2ecf4;
     border-radius: 4px 4px 0 0;
@@ -11,23 +12,50 @@ section {
   hr {
     margin: 1.2em 0;
     border: 0;
-    border-bottom: 1px solid #C5D9E8;
+    border-bottom: 1px solid #c5d9e8;
   }
   p {
     padding: 0;
+    margin: 15px 0;
     line-height: 1.7;
-    color: #3f536e;
+    color: #34495e;
     font-size: 14px;
   }
-  h1 {
-    font-size: 24px;
-  }
-  h1,h2,h3,h4,h5{
-    margin: 16px 0;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    margin: 20px 0 10px;
     line-height: 1.5;
+    font-weight: 400;
+    color: #333;
+  }
+  h1 {
+    font-size: 36px;
   }
   h2 {
-    font-size: 18px;
+    font-size: 30px;
+    margin-bottom: 25px;
+  }
+  h3 {
+    font-size: 22px;
+    margin-top: 45px;
+  }
+  h2 + h3 {
+    margin-top: 25px;
+  }
+  h4 {
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+  h5 {
+    font-size: 14px;
+  }
+  h6 {
+    font-size: 14px;
+    color: #666;
   }
   ul {
     margin: 16px 0;
@@ -40,7 +68,7 @@ section {
   pre {
     margin: 16px 0;
     padding: 16px;
-    background-color: #F7F7F7;
+    background-color: #f1f4f8;
     overflow: auto;
     code {
       padding: 0;
@@ -51,20 +79,20 @@ section {
     }
   }
   code {
-    padding: .3em .5em;
-    font-size: .9em;
+    padding: 0.3em 0.5em;
+    font-size: 0.9em;
     vertical-align: middle;
-    border: 1px solid #ECECEC;
+    border: 1px solid #ececec;
     border-radius: 2px;
-    background-color: #F7F7F7;
+    background-color: #f1f4f8;
   }
   code.code_inline {
-    padding: 0 .5em;
+    padding: 0 0.5em;
   }
   img {
     vertical-align: middle;
   }
-  p+p {
+  p + p {
     margin-top: 8px;
   }
   a {
@@ -80,15 +108,17 @@ section {
     overflow: auto;
     margin-bottom: 50px;
     th {
-      border-top: 1px solid #f3f7fa;
-      background-color: #FAFBFC;
-      border-bottom: 1px solid #f3f7fa;
-      padding: 10px 8px;
+      text-align: left;
+      // border-top: 1px solid #f3f7fa;
+      background-color: #f1f4f8;
+      // border-bottom: 1px solid #f3f7fa;
+      padding: 8px 10px;
+      font-weight: 400;
     }
-    td{
-      border-top: 1px solid #f3f7fa;
-      border-bottom: 1px solid #f3f7fa;
-      padding: 10px 8px;
+    td {
+      // border-top: 1px solid #f3f7fa;
+      border-bottom: 1px solid #f1f4f8;
+      padding: 8px 10px;
     }
   }
 }

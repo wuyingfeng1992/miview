@@ -31,7 +31,7 @@
           src="../assets/img/banner.png"
           width="100"
         ></router-link> -->
-      <router-link :to="{path: base + '/intro'}">组件</router-link>
+      <router-link :to="{path: base + '/intro'}">mview</router-link>
     </div>
   </header>
 </template>

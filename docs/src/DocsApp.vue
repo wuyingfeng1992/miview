@@ -62,7 +62,7 @@ export default {
   },
   watch: {
     $route () {
-      console.log('routeName: ', this.$route.name);
+      // console.log('routeName: ', this.$route.name);
       this.isIndex = this.$route.name === 'index'
     }
   },

@@ -1,12 +1,6 @@
-# 表格组件
+## 表格组件
 
-## 安装依赖
-
-```bash
-lerna add @element-ui-extends/webpack-build-scripts --scope=@element-ui-extends/table
-```
-
-## 参数
+### 参数
 
 ```js
 @param:
