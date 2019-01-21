@@ -10,7 +10,7 @@
         <a
           target="_blank"
           class="btn-github"
-          href="https://github.com/ly2011/mview"
+          href="https://github.com/ly2011/miview"
         >GitHub</a>
       </div>
     </div>

@@ -14,7 +14,7 @@ module.exports = merge(baseConfig('production'), {
   entry: './packages/index.js',
   output: {
     path: path.resolve(cwd, 'lib'),
-    library: 'mview',
+    library: 'miview',
     libraryTarget: 'umd',
     filename: isMinify ? '[name].min.js' : '[name].js',
     umdNamedDefine: true,
@@ -26,7 +26,8 @@ module.exports = merge(baseConfig('production'), {
       commonjs: 'vue',
       commonjs2: 'vue',
       amd: 'vue'
-    }
+    },
+    'element-ui': 'element-ui'
   },
   performance: false,
   optimization: {

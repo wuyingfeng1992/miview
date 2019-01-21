@@ -3,7 +3,7 @@
 ### 使用指南
 
 ```js
-import { BackToTop } from 'mview'
+import { BackToTop } from 'miview'
 Vue.use(BackToTop)
 ```
 

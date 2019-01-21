@@ -4,7 +4,7 @@
 ### 使用指南
 
 ```js
-import { PasteSelect } from 'mview'
+import { PasteSelect } from 'miview'
 Vue.use(PasteSelect)
 ```
 

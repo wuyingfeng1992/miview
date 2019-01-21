@@ -3,7 +3,7 @@
 ### 使用指南
 
 ```js
-import { Dialog } from 'mview'
+import { Dialog } from 'miview'
 Vue.use(Dialog)
 ```
 

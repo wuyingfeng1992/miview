@@ -31,9 +31,9 @@
 可以在项目的入口文件中引入所有组件或所需组件
 
 ```js
-import mview from 'mview' // 引入组件库
+import miview from 'miview' // 引入组件库
 
-Vue.use(mview)
+Vue.use(miview)
 ```
 
 ### 单个组件按需使用
@@ -41,7 +41,7 @@ Vue.use(mview)
 可以局部注册所需的组件，适用于与其他框架组合使用的场景
 
 ```js
-import { MTable } from 'mview'
+import { MTable } from 'miview'
 
 export default {
   components: {

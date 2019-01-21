@@ -6,18 +6,18 @@ module.exports = {
     header: {
       logo: {
         image: 'https://img.yzcdn.cn/public_files/2017/12/18/fd78cf6bb5d12e2a119d0576bedfd230.png',
-        title: 'mview',
+        title: 'miview',
         version,
         href: '#/'
       },
       nav: {
-        'Vue 组件': 'https://github.com/ly2011/mview',
+        'Vue 组件': 'https://github.com/ly2011/miview',
         lang: {
           text: 'En',
           from: 'zh-CN',
           to: 'en-US'
         },
-        github: 'https://github.com/ly2011/mview'
+        github: 'https://github.com/ly2011/miview'
       }
     },
     nav: [

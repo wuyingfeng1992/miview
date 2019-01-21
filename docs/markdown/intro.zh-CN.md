@@ -2,7 +2,7 @@
 
 ----
 
-`mview` 是一款基于 `Vue.js 2.0` 和 `ElementUI 2.0` 的前端 UI 通用组件库，主要用于快速开发 PC 网站中后台产品
+`miview` 是一款基于 `Vue.js 2.0` 和 `ElementUI 2.0` 的前端 UI 通用组件库，主要用于快速开发 PC 网站中后台产品
 
 ### 特性
 
@@ -19,4 +19,4 @@
 
 ### 贡献
 
-如果你在使用 `mview` 时遇到问题，或者有好的建议，欢迎给我们提 [Issue](https://github.com/ly2011/mview/issues) 或 [Pull Request](https://github.com/ly2011/mview/pulls)
+如果你在使用 `miview` 时遇到问题，或者有好的建议，欢迎给我们提 [Issue](https://github.com/ly2011/miview/issues) 或 [Pull Request](https://github.com/ly2011/miview/pulls)

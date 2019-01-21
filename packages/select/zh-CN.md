@@ -5,7 +5,7 @@
 ### 使用指南
 
 ```js
-import { Select } from 'mview'
+import { Select } from 'miview'
 Vue.use(Select)
 ```
 
