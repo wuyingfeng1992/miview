@@ -10,9 +10,10 @@ echo    # (optional) move to a new line
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
   # build
+  npm config set allow-same-version true
   npm config set registry http://registry.npmjs.org
   npm version $VERSION --no-git-tag-version
-  VERSION=$VERSION npm run build:lib
+  # VERSION=$VERSION npm run build:lib
 
   # commit
   git tag v$VERSION
@@ -22,5 +23,5 @@ then
   git push origin master
   git push origin refs/tags/v$VERSION
 
-  npm publish
+  # npm publish
 fi
