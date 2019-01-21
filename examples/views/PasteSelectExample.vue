@@ -2,7 +2,7 @@
   <div class="paste-select-example">
     <m-paste-select
       ref="legalNamesStr"
-      :params="{fieid: 'legalNamesStr', label: '姓名'}"
+      :params="{field: 'legalNamesStr', label: '姓名'}"
       :value="ruleForm.legalNamesStr"
       inputPlaceholder="请输入员工姓名"
       textAreaPlaceholder="请在此黏贴多个姓名"

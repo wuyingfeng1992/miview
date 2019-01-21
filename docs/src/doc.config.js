@@ -68,6 +68,8 @@ module.exports = {
           {
             groupName: '表单组件',
             list: [
+              { path: '/paste-select', title: 'PasteSelect 多行文本复制粘贴' },
+              { path: '/select', title: 'Select 选择器' },
               {
                 path: '/uploader',
                 title: 'Uploader 图片上传'

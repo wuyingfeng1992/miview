@@ -1699,6 +1699,11 @@
     "@types/unist" "*"
     "@types/vfile-message" "*"
 
+"@vant/compiler@^1.0.0":
+  version "1.0.0"
+  resolved "http://registry.npm.taobao.org/@vant/compiler/download/@vant/compiler-1.0.0.tgz#aecf1014c40db590026781cead28c951b538b461"
+  integrity sha1-rs8QFMQNtZACZ4HOrSjJUbU4tGE=
+
 "@vue/component-compiler-utils@^2.0.0":
   version "2.3.0"
   resolved "http://registry.npm.taobao.org/@vue/component-compiler-utils/download/@vue/component-compiler-utils-2.3.0.tgz#4f580f1b28fc7685859d87ea0e92a1c0271c93da"
@@ -6471,6 +6476,11 @@ markdown-table@^1.1.0:
   version "1.1.2"
   resolved "http://registry.npm.taobao.org/markdown-table/download/markdown-table-1.1.2.tgz#c78db948fa879903a41bce522e3b96f801c63786"
   integrity sha1-x425SPqHmQOkG85SLjuW+AHGN4Y=
+
+markdown-vetur@^0.0.5:
+  version "0.0.5"
+  resolved "http://registry.npm.taobao.org/markdown-vetur/download/markdown-vetur-0.0.5.tgz#293e23e21e2bd937b3e61dd848bccea8bfc6f27f"
+  integrity sha1-KT4j4h4r2Tez5h3YSLzOqL/G8n8=
 
 math-random@^1.0.1:
   version "1.0.1"

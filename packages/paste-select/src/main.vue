@@ -18,7 +18,8 @@
             :size="selectSize"
             v-model="tmpSubContent"
             :rows="8"
-            :placeholder="textAreaPlaceholder"
+            :disabled="disabled"
+            :placeholder="textareaPlaceholder"
             @change="handleSubContentChange"
           />
         </el-form-item>
@@ -30,11 +31,13 @@
         <el-button
           @click="handleCancel"
           :size="selectSize"
+          :disabled="disabled"
         >清 除</el-button>
         <el-button
           type="primary"
           @click="dialogEnter"
           :size="selectSize"
+          :disabled="disabled"
         >确 定</el-button>
       </div>
     </el-popover>
@@ -50,7 +53,7 @@
     >
       <el-form-item
         :label="params.label"
-        :prop="form[params.fieid]"
+        :prop="form[params.field]"
         :rules="[
         { required: required, message: params.label + '字段必填', trigger: 'blur' }
         ]"
@@ -105,7 +108,7 @@
           :size="selectSize"
           :class="{subject: true, 'hidden':  !dialogVisible && subContentArr.length > 0 }"
           :readonly="dialogVisible || (!dialogVisible && subContentArr.length > 0)"
-          v-model.trim="form[params.fieid]"
+          v-model.trim="form[params.field]"
           @change="changeInput"
           @blur="handleBlur"
           :disabled="disabled"
@@ -130,7 +133,7 @@ export default {
   props: {
     params: {
       type: Object,
-      default: () => { }
+      default: () => ({})
     },
     required: {
       type: Boolean,
@@ -152,7 +155,7 @@ export default {
       type: String,
       default: ''
     },
-    textAreaPlaceholder: {
+    textareaPlaceholder: {
       type: String,
       default: ''
     },
@@ -180,7 +183,7 @@ export default {
   data () {
     return {
       form: {
-        [this.params.fieid]: ''
+        [this.params.field]: ''
       },
       fromContentInput: 'input',
       subContent: '', // textarea框的值（点击确定按钮后保存的值）
@@ -232,7 +235,7 @@ export default {
       immediate: true,
       handler (val) {
         if (val) {
-          this.form[this.params.fieid] = val
+          this.form[this.params.field] = val
         }
       }
     },
@@ -253,8 +256,8 @@ export default {
             if (elSelectTagsTextMaxWidth && elSelectTagsTextWidth && (elSelectTagsTextWidth >= elSelectTagsTextMaxWidth)) {
               this.innerShowOverflowTooltip = true
             }
-            console.log('elSelectTagsText: ', this.$refs.elSelectTagsText.offsetWidth);
-            console.log('elSelectTagsTextStyle: ', this.elSelectTagsTextStyle['max-width']);
+            // console.log('elSelectTagsText: ', this.$refs.elSelectTagsText.offsetWidth);
+            // console.log('elSelectTagsTextStyle: ', this.elSelectTagsTextStyle['max-width']);
           })
         }
       }
@@ -267,10 +270,10 @@ export default {
 
     this.$watch(
       function () {
-        return this.form[this.params.fieid]
+        return this.form[this.params.field]
       },
       function (val) {
-        this.$emit('change', this.form[this.params.fieid])
+        this.$emit('change', this.form[this.params.field])
       }
     )
     // });
@@ -289,22 +292,22 @@ export default {
       // })
     },
     changeInput () {
-      // this.$emit('change', this.form[this.params.fieid])
+      // this.$emit('change', this.form[this.params.field])
       this.handleBlur()
     },
     handleBlur () {
-      if (this.form[this.params.fieid]) {
-        this.form[this.params.fieid] = this.formatTransform(this.form[this.params.fieid])
-        const value = this.form[this.params.fieid]
+      if (this.form[this.params.field]) {
+        this.form[this.params.field] = this.formatTransform(this.form[this.params.field])
+        const value = this.form[this.params.field]
         let tmpValueArr = []
         if (this.limitFieldNum && value) {
-          tmpValueArr = this.form[this.params.fieid].split(',')
+          tmpValueArr = this.form[this.params.field].split(',')
           if (tmpValueArr.length > this.limitFieldNum) {
             this.$message({
               message: `最多允许搜索${this.limitFieldNum}条数据`,
               type: 'warning'
             })
-            this.form[this.params.fieid] = tmpValueArr.slice(0, this.limitFieldNum).join(',') // 截取前100个值
+            this.form[this.params.field] = tmpValueArr.slice(0, this.limitFieldNum).join(',') // 截取前100个值
           }
         }
       }
@@ -332,15 +335,15 @@ export default {
     openDialog () {
       // this.dialogVisible = true;
       this.isCancelSubContent = false
-      if (this.form[this.params.fieid] && (this.fromContentInput === 'input' || !this.subContent)) {
-        this.subContentArr = this.tmpSubContentArr = this.form[this.params.fieid].split(',')
+      if (this.form[this.params.field] && (this.fromContentInput === 'input' || !this.subContent)) {
+        this.subContentArr = this.tmpSubContentArr = this.form[this.params.field].split(',')
         this.subContent = this.tmpSubContent = this.tmpSubContentArr.join('\r\n')
       }
     },
     dialogEnter () {
       this.fromContentInput = 'textarea'
       if (this.isCancelSubContent) {
-        this.form[this.params.fieid] = '';
+        this.form[this.params.field] = '';
         this.subContent = ''
         this.subContentArr = []
       }
@@ -361,12 +364,12 @@ export default {
       }
       this.subContent = this.tmpSubContent = tmpSubContentArr.join('\r\n')
       this.subContentArr = this.tmpSubContentArr = tmpSubContentArr;
-      this.form[this.params.fieid] = tmpSubContentArr.join(',');
+      this.form[this.params.field] = tmpSubContentArr.join(',');
       this.dialogVisible = false;
     },
     deleteTag (event, tag) {
       this.fromContentInput = 'input'
-      this.form[this.params.fieid] = '';
+      this.form[this.params.field] = '';
       this.subContent = '';
       this.subContentArr = [];
       this.tmpSubContent = '';
@@ -375,7 +378,7 @@ export default {
     },
     clear () {
       this.fromContentInput = 'input'
-      this.form[this.params.fieid] = '';
+      this.form[this.params.field] = '';
       this.subContent = '';
       this.subContentArr = [];
       this.tmpSubContent = '';

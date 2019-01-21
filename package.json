@@ -1,6 +1,6 @@
 {
   "name": "element-ui-extends",
-  "version": "0.1.0",
+  "version": "0.2.1",
   "main": "lib/index.js",
   "module": "es/index.js",
   "style": "lib/index.css",
@@ -46,6 +46,7 @@
     "@babel/runtime-corejs2": "^7.1.5",
     "@commitlint/cli": "^7.2.1",
     "@commitlint/config-conventional": "^7.1.2",
+    "@vant/compiler": "^1.0.0",
     "area-data": "^5.0.6",
     "babel-eslint": "^10.0.1",
     "babel-helper-vue-jsx-merge-props": "^2.0.3",
@@ -82,6 +83,7 @@
     "lint-staged": "^7.2.2",
     "markdown-it-anchor": "^5.0.2",
     "markdown-it-container": "^2.0.0",
+    "markdown-vetur": "^0.0.5",
     "moment": "^2.22.2",
     "node-sass": "^4.10.0",
     "npm-run-all": "^4.1.5",

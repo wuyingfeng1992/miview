@@ -117,7 +117,7 @@ export default {
   computed: {
     inputBoxStyle () {
       return {
-        width: this.inputWidth && this.inputWidth.includes('px') ? this.inputWidth : this.inputWidth + 'px'
+        width: this.inputWidth && (this.inputWidth.includes('px') || this.inputWidth.includes('%')) ? this.inputWidth : this.inputWidth + 'px'
       }
     },
     selectedLabel () {
