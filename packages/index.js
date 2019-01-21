@@ -11,7 +11,7 @@ import Table from './table';
 import Toast from './toast';
 import Transfer from './transfer';
 import TreeSelect from './tree-select';
-const version = '0.2.6';
+const version = '0.2.7';
 const components = [
   BackToTop,
   Dialog,
