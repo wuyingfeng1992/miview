@@ -1,4 +1,5 @@
-# element-ui-extends
+# miview
+> 基于element-ui二次开发的公共组件库
 
 ## package.json 说明文档
 

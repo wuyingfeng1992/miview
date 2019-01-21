@@ -7,7 +7,6 @@ export default {
   'BackToTop.zh-CN': () => import('../../packages/BackToTop/zh-CN.md'),
   'dialog.zh-CN': () => import('../../packages/dialog/zh-CN.md'),
   'paste-select.zh-CN': () => import('../../packages/paste-select/zh-CN.md'),
-  'pdf-preview.zh-CN': () => import('../../packages/pdf-preview/zh-CN.md'),
   'select.zh-CN': () => import('../../packages/select/zh-CN.md'),
   'select-area.zh-CN': () => import('../../packages/select-area/zh-CN.md'),
   'simple-img-preview.zh-CN': () => import('../../packages/simple-img-preview/zh-CN.md'),

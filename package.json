@@ -1,17 +1,11 @@
 {
-  "name": "element-ui-extends",
-  "version": "0.2.3",
+  "name": "miview",
+  "version": "0.2.4",
   "main": "lib/index.js",
   "module": "es/index.js",
   "style": "lib/index.css",
   "typings": "types/index.d.ts",
-  "files": [
-    "es",
-    "lib",
-    "packages",
-    "types",
-    "vetur"
-  ],
+  "files": ["es", "lib", "packages", "types", "vetur"],
   "scripts": {
     "bootstrap": "yarn || npm i",
     "dev": "npm-run-all --parallel build:entry dev:example",

@@ -88,7 +88,14 @@ module.exports = mode => ({
         test: /\.js$/,
         loader: 'babel-loader',
         options: { ...babelConfig },
-        // include: [resolve('examples'), resolve('packages')]
+        include: [
+          resolve('examples'),
+          resolve('packages'),
+          resolve('docs'),
+          resolve('node_modules/highlight.js'),
+          resolve('node_modules/element-ui'),
+          resolve('node_modules/vuedraggable')
+        ],
         exclude: file => /node_modules/.test(file) && !/\.vue/.test(file)
       },
       {
@@ -106,7 +113,13 @@ module.exports = mode => ({
             }
           }
         ],
-        include: [resolve('examples'), resolve('packages'), resolve('docs'), resolve('node_modules/highlight.js'), resolve('node_modules/element-ui')]
+        include: [
+          resolve('examples'),
+          resolve('packages'),
+          resolve('docs'),
+          resolve('node_modules/highlight.js'),
+          resolve('node_modules/element-ui')
+        ]
       },
       {
         test: /\.scss$/,
@@ -131,7 +144,13 @@ module.exports = mode => ({
             loader: 'sass-loader'
           }
         ],
-        include: [resolve('examples'), resolve('packages'), resolve('docs'), resolve('node_modules/highlight.js'),resolve('node_modules/element-ui')]
+        include: [
+          resolve('examples'),
+          resolve('packages'),
+          resolve('docs'),
+          resolve('node_modules/highlight.js'),
+          resolve('node_modules/element-ui')
+        ]
         // exclude: /node_modules/
       },
       // {

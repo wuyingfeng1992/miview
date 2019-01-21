@@ -13,10 +13,10 @@
         to="/transfer"
         class="btn"
       >transfer</router-link>
-      <router-link
+      <!-- <router-link
         to="/pdf-preview"
         class="btn"
-      >pdf-preview</router-link>
+      >pdf-preview</router-link> -->
       <router-link
         to="/dialog"
         class="btn"
