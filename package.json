@@ -1,11 +1,10 @@
 {
   "name": "element-ui-extends",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "main": "lib/index.js",
   "module": "es/index.js",
   "style": "lib/index.css",
   "typings": "types/index.d.ts",
-  "private": true,
   "files": [
     "es",
     "lib",
