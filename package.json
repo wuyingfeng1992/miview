@@ -1,6 +1,6 @@
 {
   "name": "miview",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "main": "lib/index.js",
   "module": "es/index.js",
   "style": "lib/index.css",
@@ -29,31 +29,26 @@
     "release": "sh build/release.sh"
   },
   "dependencies": {
-    "element-ui": "^2.4.10",
-    "vue": "^2.5.17",
-    "vue-router": "^3.0.1",
-    "vuex": "^3.0.1"
+    "@babel/runtime": "^7.3.0",
+    "area-data": "^5.0.6",
+    "element-ui": "^2.4.11"
   },
   "devDependencies": {
     "@babel/core": "^7.1.6",
-    "@babel/plugin-syntax-jsx": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/plugin-syntax-jsx": "^7.2.0",
+    "@babel/plugin-transform-object-assign": "^7.2.0",
     "@babel/plugin-transform-runtime": "^7.1.0",
     "@babel/polyfill": "^7.2.5",
     "@babel/preset-env": "^7.1.6",
-    "@babel/preset-es2015": "^7.0.0-beta.53",
-    "@babel/runtime": "^7.1.5",
-    "@babel/runtime-corejs2": "^7.1.5",
     "@commitlint/cli": "^7.2.1",
     "@commitlint/config-conventional": "^7.1.2",
     "@vant/compiler": "^1.0.0",
-    "area-data": "^5.0.6",
+    "@vue/babel-helper-vue-jsx-merge-props": "^1.0.0-beta.2",
+    "@vue/babel-preset-jsx": "^1.0.0-beta.2",
     "babel-eslint": "^10.0.1",
-    "babel-helper-vue-jsx-merge-props": "^2.0.3",
     "babel-loader": "^8.0.4",
     "babel-plugin-component": "^1.1.1",
-    "babel-plugin-jsx-v-model": "^2.0.3",
-    "babel-plugin-syntax-dynamic-import": "^6.18.0",
-    "babel-plugin-transform-vue-jsx": "^3.7.0",
     "commitizen": "^3.0.4",
     "cross-env": "^5.2.0",
     "css-loader": "^1.0.1",
@@ -102,8 +97,11 @@
     "url-loader": "^1.1.2",
     "vue-loader": "^15.4.2",
     "vue-markdown-loader": "^2.4.1",
+    "vue-router": "^3.0.2",
     "vue-template-compiler": "^2.5.17",
+    "vue-template-es2015-compiler": "^1.8.1",
     "vuedraggable": "^2.16.0",
+    "vuex": "^3.1.0",
     "webpack": "^4.25.1",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.10",
@@ -112,5 +110,8 @@
   "gitHooks": {
     "pre-commit": "lint-staged"
   },
-  "lint-staged": {}
+  "lint-staged": {},
+  "peerDependencies": {
+    "vue": "^2.5.22"
+  }
 }
