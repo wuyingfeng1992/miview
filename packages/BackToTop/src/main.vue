@@ -103,7 +103,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .back-to-ceiling {
   position: fixed;
   display: inline-block;

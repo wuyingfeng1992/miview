@@ -10,8 +10,8 @@ const tasks = [
   // 'lint',
   'build:entry',
   'build:components',
-  // 'build:style',
-  // 'build:style-entry',
+  'build:style',
+  'build:style-entry',
   'build:packages'
 ]
 

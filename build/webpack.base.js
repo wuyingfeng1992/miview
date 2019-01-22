@@ -1,6 +1,7 @@
 const path = require('path')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 // const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 const cwd = process.cwd()
@@ -8,6 +9,7 @@ const babelConfig = require('../config/babelrc')
 const utils = require('./utils')
 const MarkdownItContainer = require('markdown-it-container')
 const striptags = require('./strip-tags')
+const devMode = process.env.NODE_ENV !== 'production'
 
 const vueMarkdown = {
   preprocess: (MarkdownIt, source) => {
@@ -104,7 +106,7 @@ module.exports = mode => ({
       },
       {
         test: /\.css$/,
-        use: [
+        use: (devMode ? [] : []).concat([
           'vue-style-loader',
           {
             loader: 'css-loader',
@@ -112,7 +114,7 @@ module.exports = mode => ({
               minimize: mode === 'production'
             }
           }
-        ],
+        ]),
         include: [
           resolve('examples'),
           resolve('packages'),
@@ -123,7 +125,7 @@ module.exports = mode => ({
       },
       {
         test: /\.scss$/,
-        use: [
+        use: (devMode ? [] : []).concat([
           'vue-style-loader',
           {
             loader: 'css-loader',
@@ -143,7 +145,7 @@ module.exports = mode => ({
           {
             loader: 'sass-loader'
           }
-        ],
+        ]),
         include: [
           resolve('examples'),
           resolve('packages'),
@@ -201,7 +203,12 @@ module.exports = mode => ({
       }
     ]
   },
-  plugins: [new ProgressBarPlugin(), new VueLoaderPlugin()],
+  plugins: [new ProgressBarPlugin(), new VueLoaderPlugin(),
+    // new MiniCssExtractPlugin({
+    //   filename: devMode ? '[name].css' : '[name].[hash].css',
+    //   chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
+    // })
+  ],
   resolve: {
     alias: {
       vue$: 'vue/dist/vue.esm.js',

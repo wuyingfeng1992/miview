@@ -208,7 +208,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .select-box {
   /deep/ {
     .input-box {

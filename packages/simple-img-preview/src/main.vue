@@ -352,7 +352,7 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 $menuWrapperHeight: 60px;
 .el-dialog__wrapper {
   &.img-dialog-wrapper {
