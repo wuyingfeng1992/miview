@@ -417,7 +417,7 @@ export default {
 </script>
 
 <style lang="scss">
-.paste-select-box {
+/* .paste-select-box {
   display: inline-block;
 }
 .paste-select-box .el-dialog__wrapper {
@@ -560,5 +560,5 @@ export default {
     max-width: 400px;
     word-break: break-all;
   }
-}
+} */
 </style>

@@ -2,6 +2,7 @@
 // This file is auto gererated by build/build-entry.js
 import BackToTop from './BackToTop';
 import Dialog from './dialog';
+import IndexScss from './index.scss';
 import PasteSelect from './paste-select';
 import Select from './select';
 import SelectArea from './select-area';
@@ -15,6 +16,7 @@ const version = '0.2.9';
 const components = [
   BackToTop,
   Dialog,
+  IndexScss,
   PasteSelect,
   Select,
   SelectArea,
@@ -39,6 +41,7 @@ export {
   version,
   BackToTop,
   Dialog,
+  IndexScss,
   PasteSelect,
   Select,
   SelectArea,

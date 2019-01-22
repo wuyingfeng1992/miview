@@ -129,22 +129,3 @@ export default {
 }
 </script>
 
-<style lang="scss">
-.i-tree-select-popover {
-  &.el-popper[x-placement^="bottom"] {
-    margin-top: 0;
-  }
-  &.el-popper[x-placement^="top"] {
-    margin-bottom: 0;
-  }
-  .i-tree-select-node {
-    display: inline-block;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    .label {
-      max-width: 100%;
-    }
-  }
-}
-</style>

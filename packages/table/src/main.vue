@@ -167,17 +167,3 @@ export default {
 }
 </script>
 
-<style lang="scss">
-.i-table {
-  /deep/ {
-    .cell > span {
-      word-break: normal;
-    }
-    .pagination-box {
-      margin-top: 12px;
-      text-align: right;
-      margin-right: 36px;
-    }
-  }
-}
-</style>

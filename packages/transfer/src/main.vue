@@ -268,20 +268,4 @@ export default {
   }
 };
 </script>
-<style lang="scss">
-.transfer {
-  .el-transfer {
-    /deep/ {
-      .el-transfer-panel__item + .el-transfer-panel__item {
-        margin-left: 0;
-      }
-      .el-transfer-panel__item {
-        height: 30px;
-        line-height: 30px;
-        padding-left: 15px;
-        display: block;
-      }
-    }
-  }
-}
-</style>
+

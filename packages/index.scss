@@ -1,0 +1,20 @@
+/**
+ * Entry of all component's style
+ */
+
+/* base */
+@import './style/base.scss';
+
+/* components */
+@import './paste-select/index.scss';
+@import './BackToTop/index.scss';
+@import './dialog/index.scss';
+@import './select/index.scss';
+@import './select-area/index.scss';
+@import './simple-img-preview/index.scss';
+@import './svg-icon/index.scss';
+@import './table/index.scss';
+@import './toast/index.scss';
+@import './svg-icon/index.scss';
+@import './transfer/index.scss';
+@import './tree-select/index.scss';
