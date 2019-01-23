@@ -1,6 +1,6 @@
 {
   "name": "miview",
-  "version": "0.2.10",
+  "version": "0.2.11",
   "main": "lib/index.js",
   "module": "es/index.js",
   "style": "lib/index.css",
