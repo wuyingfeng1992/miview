@@ -12,10 +12,15 @@ const whiteList = []
 const dir = path.join(__dirname, '../es')
 
 function destEntryFile (component, filename, ext = '') {
-  const deps = analyzeDependencies(component).map(dep => getStyleRelativePath(component, dep, ext))
+  // 处理windows下路径问题 `\` -> '/', 导致import失败
+  const deps = analyzeDependencies(component)
+    .map(dep => getStyleRelativePath(component, dep, ext))
+    .map(file => file.replace(/\\/g, '/'))
+  // console.log('deps: ', JSON.stringify(deps))
 
   const esEntry = path.join(dir, component, `style/${filename}`)
   const libEntry = path.join(__dirname, '../lib', component, `style/${filename}`)
+
   const esContent = deps.map(dep => `import '${dep}';`).join('\n')
   const libContent = deps.map(dep => `require('${dep}');`).join('\n')
 
