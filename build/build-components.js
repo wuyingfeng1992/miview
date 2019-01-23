@@ -75,6 +75,6 @@ compile(libDir)
 markdownVetur.parseAndWrite({
   path: srcDir,
   test: /zh-CN\.md/,
-  tagPrefix: 'm-',
+  tagPrefix: 'mi-',
   outputDir: veturDir
 })

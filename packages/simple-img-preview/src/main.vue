@@ -81,7 +81,7 @@ import Popup from 'element-ui/src/utils/popup';
 import emitter from 'element-ui/src/mixins/emitter';
 
 export default {
-  name: 'MSimpleImgPreview',
+  name: 'MiSimpleImgPreview',
 
   mixins: [Popup, emitter],
   directives: {

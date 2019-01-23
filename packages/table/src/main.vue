@@ -99,7 +99,7 @@
 
 <script>
 export default {
-  name: 'MTable',
+  name: 'MiTable',
   props: {
     tableData: { // 表格列表数据
       type: Array,
@@ -155,7 +155,7 @@ export default {
       if (this.isExpandOne) {
         this.$refs.table.store.states.expandRows = expandRows.length !== 0 ? [row] : [];
       }
-      this.$emit('handleExpandRow')
+      this.$emit('handleExpandRow', row, expandRows)
     },
     sizeChange (e) {
       this.$emit('size-change', e);

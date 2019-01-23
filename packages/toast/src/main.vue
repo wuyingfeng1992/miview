@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  name: 'MToast',
+  name: 'MiToast',
   data () {
     return {}
   },

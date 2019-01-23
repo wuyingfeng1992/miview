@@ -1,6 +1,6 @@
 /* eslint-disable */
 // This file is auto gererated by build/build-entry.js
-import BackToTop from './BackToTop';
+import BackTop from './back-top';
 import Dialog from './dialog';
 import IndexScss from './index.scss';
 import PasteSelect from './paste-select';
@@ -14,7 +14,7 @@ import Transfer from './transfer';
 import TreeSelect from './tree-select';
 const version = '0.2.11';
 const components = [
-  BackToTop,
+  BackTop,
   Dialog,
   IndexScss,
   PasteSelect,
@@ -39,7 +39,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 export {
   install,
   version,
-  BackToTop,
+  BackTop,
   Dialog,
   IndexScss,
   PasteSelect,

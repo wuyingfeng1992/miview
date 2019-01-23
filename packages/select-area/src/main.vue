@@ -43,7 +43,7 @@
 
 <script>
 export default {
-  name: 'MSelectArea',
+  name: 'MiSelectArea',
   props: {
     value: { // 默认值
       type: Array,

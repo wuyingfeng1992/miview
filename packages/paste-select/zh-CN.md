@@ -1,5 +1,6 @@
-##  多行文本复制粘贴输入组件
-多行文本复制粘贴输入组件，主要方便可以复制多行excel文本在搜索框精确查询
+## PasteSelect 复制粘贴输入器
+
+复制粘贴输入器，主要方便可以复制多行excel文本在搜索框精确查询
 
 ### 使用指南
 
@@ -32,7 +33,7 @@ export default {
 }
 </script>
 <div class="demo-dialog demo-block">
-  <m-paste-select
+  <mi-paste-select
     ref="legalNamesStr"
     :params="{field: 'legalNamesStr', label: '姓名'}"
     :value="ruleForm.legalNamesStr"
@@ -48,7 +49,7 @@ export default {
 ```html
 <template>
   <div class="paste-select-example">
-    <m-paste-select
+    <mi-paste-select
       ref="legalNamesStr"
       :params="{field: 'legalNamesStr', label: '姓名'}"
       :value="ruleForm.legalNamesStr"

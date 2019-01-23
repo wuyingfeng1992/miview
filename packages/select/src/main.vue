@@ -65,7 +65,7 @@
 <script>
 import Clickoutside from 'element-ui/src/utils/clickoutside';
 export default {
-  name: 'MSelect',
+  name: 'MiSelect',
   directives: { Clickoutside },
   props: {
     custom: { // 是否是定制的下拉选择框

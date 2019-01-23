@@ -61,7 +61,7 @@ import TransferPanel from './transfer-panel';
 import Migrating from 'element-ui/src/mixins/migrating';
 
 export default {
-  name: 'MTransfer',
+  name: 'MiTransfer',
 
   mixins: [Emitter, Locale, Migrating],
 

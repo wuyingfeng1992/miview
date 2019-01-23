@@ -60,7 +60,7 @@ module.exports = {
                 title: 'Dialog 弹框'
               },
               {
-                path: '/BackToTop',
+                path: '/back-top',
                 title: 'BackTop 回到顶部'
               }
             ]
@@ -68,12 +68,8 @@ module.exports = {
           {
             groupName: '表单组件',
             list: [
-              { path: '/paste-select', title: 'PasteSelect 多行文本复制粘贴' },
-              { path: '/select', title: 'Select 选择器' },
-              {
-                path: '/uploader',
-                title: 'Uploader 图片上传'
-              }
+              { path: '/paste-select', title: 'PasteSelect 复制粘贴器' },
+              { path: '/select', title: 'Select 选择器' }
             ]
           },
           {
@@ -90,7 +86,7 @@ module.exports = {
             list: [
               {
                 path: '/simple-img-preview',
-                title: 'SimpleImgPreview 图片预览'
+                title: 'SimpleImgPreview 图片预览器'
               },
               {
                 path: '/table',
@@ -103,7 +99,7 @@ module.exports = {
             list: [
               {
                 path: '/tree-select',
-                title: 'TreeSelect 分类选择'
+                title: 'TreeSelect 树型选择器'
               }
             ]
           },
@@ -111,8 +107,8 @@ module.exports = {
             groupName: '业务组件',
             list: [
               {
-                path: '/area',
-                title: 'Area 省市区选择'
+                path: '/select-area',
+                title: 'SelectArea 省市区选择器'
               }
             ]
           }

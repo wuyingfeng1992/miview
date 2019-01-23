@@ -81,7 +81,7 @@ export default {
 </script>
 <div class="demo-dialog demo-block">
   <el-button type="text" @click="openDialog">点击打开 Dialog</el-button>
-  <m-dialog
+  <mi-dialog
       v-model="isShow"
       title="打开"
       size="standard"
@@ -90,7 +90,7 @@ export default {
       <div>
         这是个standard弹窗
       </div>
-    </m-dialog>
+    </mi-dialog>
   </div>
 </div>
 
@@ -99,7 +99,7 @@ export default {
 <template>
   <div>
     <el-button type="text" @click="openDialog">点击打开 Dialog</el-button>
-    <m-dialog
+    <mi-dialog
       v-model="isShow"
       title="打开"
       size="standard"
@@ -108,7 +108,7 @@ export default {
       <div>
         这是个standard弹窗
       </div>
-    </m-dialog>
+    </mi-dialog>
   </div>
 </template>
 <script>
@@ -155,18 +155,18 @@ Dialog 组件的内容是可以任意的，甚至是表格或表单
 <div class="demo-dialog demo-block">
   <!-- Table -->
   <el-button type="text" @click="dialogTableVisible = true">打开嵌套表格的 Dialog</el-button>
-  <m-dialog title="收货地址" v-model="dialogTableVisible">
+  <mi-dialog title="收货地址" v-model="dialogTableVisible">
     <el-table :data="gridData">
       <el-table-column prop="date" label="日期" width="150"></el-table-column>
       <el-table-column prop="name" label="姓名" width="200"></el-table-column>
       <el-table-column prop="address" label="地址"></el-table-column>
     </el-table>
-  </m-dialog>
+  </mi-dialog>
 
   <!-- Form -->
   <el-button type="text" @click="dialogFormVisible = true">打开嵌套表单的 Dialog</el-button>
 
-  <m-dialog title="收货地址" v-model="dialogFormVisible" :toolbar="toolbar">
+  <mi-dialog title="收货地址" v-model="dialogFormVisible" :toolbar="toolbar">
     <el-form :model="form">
       <el-form-item label="活动名称" :label-width="formLabelWidth">
         <el-input v-model="form.name" autocomplete="off"></el-input>
@@ -178,7 +178,7 @@ Dialog 组件的内容是可以任意的，甚至是表格或表单
         </el-select>
       </el-form-item>
     </el-form>
-  </m-dialog>
+  </mi-dialog>
 </div>
 
 :::demo
@@ -186,18 +186,18 @@ Dialog 组件的内容是可以任意的，甚至是表格或表单
 ```html
 <!-- Table -->
 <el-button type="text" @click="dialogTableVisible = true">打开嵌套表格的 Dialog</el-button>
-<m-dialog title="收货地址" v-model="dialogTableVisible">
+<mi-dialog title="收货地址" v-model="dialogTableVisible">
   <el-table :data="gridData">
     <el-table-column prop="date" label="日期" width="150"></el-table-column>
     <el-table-column prop="name" label="姓名" width="200"></el-table-column>
     <el-table-column prop="address" label="地址"></el-table-column>
   </el-table>
-</m-dialog>
+</mi-dialog>
 
 <!-- Form -->
 <el-button type="text" @click="dialogFormVisible = true">打开嵌套表单的 Dialog</el-button>
 
-<m-dialog title="收货地址" v-model="dialogFormVisible" :toolbar="toolbar">
+<mi-dialog title="收货地址" v-model="dialogFormVisible" :toolbar="toolbar">
   <el-form :model="form">
     <el-form-item label="活动名称" :label-width="formLabelWidth">
       <el-input v-model="form.name" autocomplete="off"></el-input>
@@ -209,7 +209,7 @@ Dialog 组件的内容是可以任意的，甚至是表格或表单
       </el-select>
     </el-form-item>
   </el-form>
-</m-dialog>
+</mi-dialog>
 <script>
 export default {
   data () {

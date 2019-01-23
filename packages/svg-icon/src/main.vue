@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  name: 'MSvgIcon',
+  name: 'MiSvgIcon',
   props: {
     iconClass: {
       type: String,

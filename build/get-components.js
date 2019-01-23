@@ -5,6 +5,7 @@ const path = require('path')
 const excludes = [
   'index.js',
   'index.less',
+  'assets',
   'style',
   'styles',
   'mixins',

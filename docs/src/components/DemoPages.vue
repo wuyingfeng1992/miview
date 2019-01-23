@@ -18,11 +18,11 @@ export default {
   box-shadow: 0 4px 30px 0 rgba(223, 225, 230, 0.5);
   .nav {
     float: left;
-    width: 210px;
+    width: 240px;
   }
   .view {
     float: left;
-    width: calc(100% - 215px);
+    width: calc(100% - 245px);
     padding: 32px 48px 48px;
     box-sizing: border-box;
   }

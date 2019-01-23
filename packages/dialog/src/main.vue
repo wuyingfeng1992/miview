@@ -42,7 +42,7 @@
 <script>
 import Drag from '../../directives/drag.js'
 export default {
-  name: 'MDialog',
+  name: 'MiDialog',
   directives: { Drag },
   props: {
     mode: {

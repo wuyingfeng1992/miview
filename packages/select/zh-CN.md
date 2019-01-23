@@ -83,7 +83,7 @@ export default {
 }
 </script>
 <div class="demo-dialog demo-block">
-  <m-select
+  <mi-select
     :options="options"
     custom
     multiple
@@ -102,7 +102,7 @@ export default {
 ```html
 <template>
   <div class="i-select-demo">
-    <m-select
+    <mi-select
       :options="options"
       custom
       multiple

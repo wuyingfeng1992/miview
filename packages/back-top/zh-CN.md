@@ -3,8 +3,8 @@
 ### 使用指南
 
 ```js
-import { BackToTop } from 'miview'
-Vue.use(BackToTop)
+import { BackTop } from 'miview'
+Vue.use(BackTop)
 ```
 
 ### 代码演示
@@ -17,7 +17,7 @@ Vue.use(BackToTop)
     },
     methods: {
       scrollToBottom () {
-        console.log('scrollToBottom: ', this.height)
+        // console.log('scrollToBottom: ', this.height)
         window.scrollTo(0, this.height + 80 + 96 + 60)
       }
     }
@@ -28,14 +28,14 @@ Vue.use(BackToTop)
   min-height: 200vh;
 }
 </style>
-<div class="demo-back-to-top demo-block">
+<div class="demo-back-top demo-block">
   <el-button @click="scrollToBottom">查看效果</el-button>
-  <m-back-to-top />
+  <mi-back-top />
 </div>
 
 :::demo
 
 ```html
-<m-back-to-top />
+<mi-back-top />
 ```
 :::

@@ -4,7 +4,7 @@ export default {
   'install.zh-CN': () => import('../markdown/install.zh-CN.md'),
   'intro.zh-CN': () => import('../markdown/intro.zh-CN.md'),
   'quickstart.zh-CN': () => import('../markdown/quickstart.zh-CN.md'),
-  'BackToTop.zh-CN': () => import('../../packages/BackToTop/zh-CN.md'),
+  'back-top.zh-CN': () => import('../../packages/back-top/zh-CN.md'),
   'dialog.zh-CN': () => import('../../packages/dialog/zh-CN.md'),
   'paste-select.zh-CN': () => import('../../packages/paste-select/zh-CN.md'),
   'select.zh-CN': () => import('../../packages/select/zh-CN.md'),

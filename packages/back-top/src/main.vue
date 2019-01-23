@@ -29,7 +29,7 @@
 
 <script>
 export default {
-  name: 'MBackToTop',
+  name: 'MiBackTop',
   props: {
     visibilityHeight: {
       type: Number,

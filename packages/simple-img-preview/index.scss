@@ -2,20 +2,20 @@ $menuWrapperHeight: 60px;
 .el-dialog__wrapper {
   &.img-dialog-wrapper {
     background-color: rgba(0, 0, 0, 0.2); // 遮罩
-  }
-  &.img-dialog-wrapper.el-dialog {
-    position: relative;
-    transform: none;
-    margin: 0;
-    border-radius: 0;
-    top: 0 !important;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    width: 100% !important;
-    height: 100% !important;
-    background: transparent;
-    box-shadow: none;
+    .el-dialog {
+      position: relative;
+      transform: none;
+      margin: 0;
+      border-radius: 0;
+      top: 0 !important;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 100% !important;
+      height: 100% !important;
+      background: transparent;
+      box-shadow: none;
+    }
   }
   .img-dialog-button {
     padding: 20px 10px;
@@ -78,16 +78,16 @@ $menuWrapperHeight: 60px;
       height: 40px;
       margin: 10px 10px;
       &.left-rotate {
-        // background: url('./src/assets/img/left-rotate.png') no-repeat center center;
+        background: url('assets/img/left-rotate.png') no-repeat center center;
       }
       &.right-rotate {
-        // background: url('./src/assets/img/right-rotate.png') no-repeat center center;
+        background: url('assets/img/right-rotate.png') no-repeat center center;
       }
       &.big {
-        // background: url('./src/assets/img/zoom-in.png') no-repeat center center;
+        background: url('assets/img/zoom-in.png') no-repeat center center;
       }
       &.small {
-        // background: url('./src/assets/img/zoom-out.png') no-repeat center center;
+        background: url('assets/img/zoom-out.png') no-repeat center center;
       }
       &.disabled {
         opacity: 0.2;
@@ -96,16 +96,18 @@ $menuWrapperHeight: 60px;
   }
 }
 
-.el-dialog__wrapper {
-  &.img-dialog-wrapper.el-dialog {
-    .img-container {
-      .img-wrapper {
-        img {
-          max-width: 100%;
-          // max-height: 100%;
-          display: block;
+/* .el-dialog__wrapper {
+  &.img-dialog-wrapper {
+    .el-dialog {
+      .img-container {
+        .img-wrapper {
+          img {
+            max-width: 100%;
+            // max-height: 100%;
+            display: block;
+          }
         }
       }
     }
   }
-}
+} */
