@@ -14,7 +14,7 @@
   ],
   "scripts": {
     "bootstrap": "yarn || npm i",
-    "dev": "npm-run-all --parallel build:entry dev:example",
+    "dev": "npm-run-all --parallel build:entry dev:site",
     "dev:example": "webpack-dev-server --config build/webpack.dev.js",
     "dev:site": "webpack-dev-server --config build/webpack.doc.js",
     "lint": "eslint ./packages --ext .js,.vue && stylelint \"packages/*.css\"",

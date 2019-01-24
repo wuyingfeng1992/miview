@@ -15,6 +15,12 @@
 
 - `build:site`: 线上site站点生成并部署
 
+## 未来计划
+
+[x] calendar 日历
+[x] picture 预览器(https://github.com/faimaklg/vue-viewerjs)
+[x] pdf 预览器(https://pdfobject.com/)
+
 ## 项目构建参考
 
 1. [mu-ui](https://github.com/mu-ui/mu-ui)
