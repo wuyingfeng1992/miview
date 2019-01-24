@@ -45,21 +45,23 @@
           ref="tags"
         >
           <span v-if="valueModel.length">
-            <el-tag
-              v-for="(item, index) in valueModel"
-              :key="item"
-              :size="collapseTagSize"
-              closable
-              type="info"
-              :title="labelModel[index]"
-              disable-transition
-              @close="deleteTag($event, item)"
-            >
-              <span
-                class="el-select__tags-text"
-                :style="elSelectTagsTextStyle"
-              >{{labelModel[index]}}</span>
-            </el-tag>
+            <transition-group @after-leave="resetInputHeight">
+              <el-tag
+                v-for="(item, index) in valueModel"
+                :key="item"
+                :size="collapseTagSize"
+                closable
+                type="info"
+                :title="labelModel[index]"
+                disable-transition
+                @close="deleteTag($event, item)"
+              >
+                <span
+                  class="el-select__tags-text"
+                  :style="elSelectTagsTextStyle"
+                >{{labelModel[index]}}</span>
+              </el-tag>
+            </transition-group>
           </span>
         </div>
         <el-input
@@ -254,7 +256,7 @@ export default {
       if (node.level !== 1) { // 若节点不是第一层级，则不重置tree位置
         return false
       }
-      // this.resetTreePos()
+      this.resetPopoverPosition()
     },
     handleCheckChange (data, checked, indeterminate) {
       // console.log(data, checked, indeterminate)
@@ -273,9 +275,10 @@ export default {
 
       })
       this.labelModel = labelModel
-      console.log('labelModel:  ', labelModel);
-      console.log('valueModel: ', checkedKeys);
-
+      // console.log('labelModel:  ', labelModel);
+      // console.log('valueModel: ', checkedKeys);
+      this.resetInputHeight()
+      // this.$forceUpdate()
 
       // this.labelModel = checkedNodes.filter
       // console.log(checked)
@@ -335,6 +338,7 @@ export default {
         this.labelModel.splice(index, 1)
         this.setCheckedKeys(this.valueModel)
         this.$emit('remove-tag', tag)
+        this.resetInputHeight()
       }
       event.stopPropagation()
     },
@@ -361,14 +365,21 @@ export default {
         let input = [].filter.call(inputChildNodes, item => item.tagName === 'INPUT')[0]
         const tags = this.$refs.tags
         const sizeInMap = this.initialInputHeight || 40
+        // console.log('tags: ', tags ? tags.clientHeight : 0)
+        // console.log('sizeInMap: ', sizeInMap)
+
         input.style.height = this.labelModel.length === 0
           ? sizeInMap + 'px'
           : Math.max(
             tags ? (tags.clientHeight + (tags.clientHeight > sizeInMap ? 6 : 0)) : 0,
             sizeInMap
           ) + 'px'
-
+        this.resetPopoverPosition()
       })
+    },
+    resetPopoverPosition () {
+      this.$refs.popoverTree && (this.$refs.popoverTree.showPopper = false)
+      this.$refs.popoverTree && (this.$refs.popoverTree.showPopper = true)
     }
   }
 }
