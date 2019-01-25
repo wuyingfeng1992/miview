@@ -1,9 +1,9 @@
 <template>
-  <div class="i-tree-select">
+  <div class="mi-tree-select">
     <el-popover
       ref="popoverTree"
       placement="bottom-start"
-      popper-class="i-tree-select-popover"
+      popper-class="mi-tree-select-popover"
       trigger="click"
       v-model="selectorDisplay"
       @show="handleShowPopover"
@@ -33,7 +33,7 @@
       ></el-tree>
     </el-popover>
     <el-select
-      class="org-selector--selector"
+      class="mi-tree-select__select"
       :class="{'selector__single-line': isSingleLine}"
       :value="value"
       v-popover:popoverTree
@@ -41,10 +41,10 @@
       :disabled="disabled"
       value-key="value"
       :multiple="multiple"
-      clearable
+      :clearable="clearableAll"
       @remove-tag="onRemove"
       @clear="onChange"
-      popper-class="i-tree-select-selector-popper"
+      popper-class="mi-tree-select__select-popper"
     >
       <el-option
         v-for="item in selectedOptions"
@@ -144,6 +144,10 @@ export default {
     isSingleLine: { // 是否一行展示选中的选项
       type: Boolean,
       default: false
+    },
+    clearable: { // 	是否可以清空选项，仅适用于单选
+      type: Boolean,
+      default: false
     }
   },
   data () {
@@ -154,6 +158,11 @@ export default {
       expandPath: [] // 默认展开的节点的 key 的数组
     }
   },
+  computed: {
+    clearableAll () {
+      return !this.multiple && this.clearable
+    }
+  },
   watch: {
     value: {
       immediate: true,
@@ -161,10 +170,13 @@ export default {
         if (val && val !== this.tempVal) {
           // TODO: 自动展开相应节点
           // this.expandPath = [...val.reduce((ps, v) => ps.add(v.slice(0, -1)), new Set())]
-          // console.log('watch - value: ', val);
-          this.expandPath = val
-          if (this.multiple) this.checkNodes(val)
-          else this.onChange(val)
+          if (this.multiple) {
+            this.checkNodes(val)
+            this.expandPath = val
+          } else {
+            this.expandPath = [val]
+            this.onSelectChange(val)
+          }
         }
       }
     }
@@ -182,17 +194,41 @@ export default {
       this.disabled && (this.selectorDisplay = false)
     },
     handleHidePopover () { },
+    onSelectChange (e) { // 单选的时候使用
+      if (!this.multiple) {
+        this.selectorDisplay = false;
+        this.$nextTick(() => {
+          const ids = e ? [e] : []
+          const selectedOptions = []
+          ids.forEach(key => {
+            const labelKey = this.$refs.tree.getNode(key) ? this.$refs.tree.getNode(key)[this.props.label] : null
+            selectedOptions.push({
+              [this.props.label]: labelKey,
+              [this.props.value]: key
+            })
+          })
+          this.selectedOptions = selectedOptions
+          console.log('selectedOptions: ', selectedOptions);
+
+          this.update(e ? e : '');
+        })
+      }
+    },
     /**
      * @description 改变组织选择器的选择时
      * @param e 当前组织的信息（为空则是清空当前组织）
      */
     onChange (e) {
+      // console.log('onChange...', e);
+
       if (!this.multiple) {
         this.selectorDisplay = false;
         this.selectedOptions = e ? [e] : [];
-        this.update(e ? e : '');
-      } else {
-
+        // console.log('selectedOptions ==> ', this.selectedOptions);
+        // if (!e) {
+        //   this.$refs.tree && this.$refs.tree.setCheckedKeys([], true)
+        // }
+        this.update(e ? e[this.props.value] : '');
       }
     },
     /**
@@ -201,7 +237,7 @@ export default {
      */
     onRemove (e) {
       const keys = this.value.filter(v => v !== e)
-      console.log('keys: ', keys);
+      // console.log('keys: ', keys);
 
       this.$refs.tree && this.$refs.tree.setCheckedKeys(keys, true)
       this.update(keys)
@@ -210,8 +246,8 @@ export default {
      * @description 当多选勾选时
      */
     onMultiChange (nodeData, newVal, oldVal) {
+      if (!this.multiple) return
       if (!this.$refs.tree) return
-      console.log('222');
 
       const nodes = this.$refs.tree.getCheckedNodes().filter(v => !v[this.props.children]); // 只选取叶子节点的数据
       // const nodes = this.$refs.tree.getCheckedNodes();
@@ -247,13 +283,8 @@ export default {
           })
         })
         this.selectedOptions = selectedOptions
-
       })
-
     }
   }
 }
 </script>
-
-<style>
-</style>

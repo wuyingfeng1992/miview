@@ -1,25 +1,39 @@
-.i-tree-select-popover {
+.mi-tree-select-popover {
   &.el-popper[x-placement^='bottom'] {
     margin-top: 0;
   }
   &.el-popper[x-placement^='top'] {
     margin-bottom: 0;
   }
-  .i-tree-select-node {
-    display: inline-block;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    .label {
-      max-width: 100%;
-    }
-  }
+  // .i-tree-select-node {
+  //   display: inline-block;
+  //   overflow: hidden;
+  //   text-overflow: ellipsis;
+  //   white-space: nowrap;
+  //   .label {
+  //     max-width: 100%;
+  //   }
+  // }
 }
-.i-tree-select-selector-popper {
+.mi-tree-select__select-popper {
   display: none;
 }
-.i-tree-select {
-  .el-select__tags {
+.mi-tree-select {
+  .mi-tree-select__select {
+    .el-tag {
+      max-width: 100%;
+      padding-right: 30px;
+      .el-select__tags-text {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        display: inline-block;
+        max-width: 100%;
+        vertical-align: middle;
+      }
+    }
+  }
+  /*   .el-select__tags {
     max-width: 100%;
     .el-tag {
       display: inline-block;
@@ -38,7 +52,7 @@
   }
   .el-input.el-input--suffix.rotate .el-input__suffix {
     transform: rotate(180deg);
-  }
+  } */
   .select-tree {
     max-height: 350px;
     overflow-y: scroll;
