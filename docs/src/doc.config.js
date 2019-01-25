@@ -69,7 +69,8 @@ module.exports = {
             groupName: '表单组件',
             list: [
               { path: '/paste-select', title: 'PasteSelect 复制粘贴器' },
-              { path: '/select', title: 'Select 选择器' }
+              { path: '/select', title: 'Select 选择器' },
+              { path: '/language-input', title: 'LanguageInput 多语言' }
             ]
           },
           {
@@ -86,7 +87,7 @@ module.exports = {
             list: [
               {
                 path: '/simple-img-preview',
-                title: 'SimpleImgPreview 图片预览器'
+                title: 'SimpleImgPreview 图片预览'
               },
               {
                 path: '/table',

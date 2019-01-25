@@ -318,10 +318,3 @@ filterable | 可搜索 | Boolean | - | false
 width | select框的宽度 | String | - | 220
 
 [更多参数请查看](http://element-cn.eleme.io/#/zh-CN/component/tree)
-
-### Events
-
-事件名称 | 说明 | 回调参数
----|--- | --- |
-change | 选中值发生变化时触发 | -
-clear | 清空输入框的值 | -

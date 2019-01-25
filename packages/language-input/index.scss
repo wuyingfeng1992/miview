@@ -1,0 +1,118 @@
+.language-input-box {
+  display: inline-block;
+
+  .el-dialog__wrapper {
+    position: absolute;
+    top: 48px;
+    right: 0;
+    left: 0;
+    overflow: visible;
+    margin: 0;
+  }
+  .el-form--inline .el-form-item {
+    margin-right: 0;
+  }
+
+  .language-input-icon {
+    position: absolute;
+    // width: 35px;
+    width: 26px;
+    height: 100%;
+    right: 0;
+    top: 0;
+    text-align: center;
+    color: #bfcbd9;
+    transition: all 0.3s;
+    &::before {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+    }
+    &.paste-select-icon--mini {
+      width: 24px;
+      font-size: 14px;
+    }
+  }
+
+  .language-input-form {
+    display: inline-block;
+  }
+  .el-dialog__header,
+  .el-dialog__body {
+    padding: 0;
+  }
+  .el-select__tags {
+    position: absolute;
+    line-height: normal;
+    white-space: normal;
+    z-index: 1;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+  .el-tag {
+    margin: 2px 0 2px 6px;
+    .el-icon-close {
+      top: -6px;
+      // right: 2px;
+    }
+    &.el-tag--small {
+      height: 24px;
+      padding: 0 5px;
+      line-height: 22px;
+      box-sizing: border-box;
+      border-color: transparent;
+      margin: 2px 0 2px 6px;
+      // max-width: 75px;
+      display: inline-block;
+    }
+    &.el-tag--mini {
+      height: 20px;
+      padding: 0 2px;
+      line-height: 19px;
+      // .el-select__tags-text {
+      //   max-width: 40px;
+      // }
+      .el-icon-close {
+        top: -5px;
+        // margin-left: -3px;
+        -ms-transform: scale(0.7);
+        transform: scale(0.7);
+      }
+    }
+  }
+  .el-select__tags-text {
+    // max-width: 50px;
+    display: inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  .el-form-item__label {
+    display: none;
+  }
+}
+
+.language-input-popover {
+  &.el-popover {
+    padding: 10px;
+  }
+  .el-popover__title {
+    line-height: 24px;
+    font-size: 18px;
+    color: #303133;
+  }
+  .dialog-footer {
+    .el-button {
+      min-width: 10px;
+    }
+  }
+}
+.language-input-select-select__tags-text-popper-dialog {
+  &.el-tooltip__popper {
+    max-width: 400px;
+    word-break: break-all;
+  }
+}

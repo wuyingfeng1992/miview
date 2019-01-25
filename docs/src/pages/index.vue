@@ -1,7 +1,8 @@
 <template>
   <div class="pg-index">
     <div class="index-container">
-      <img src="http://y.gtimg.cn/mediastyle/yqq/img/logo@2x.png?nowebp=1 2x">
+      <!-- <img src="http://y.gtimg.cn/mediastyle/yqq/img/logo@2x.png?nowebp=1 2x"> -->
+      <h1 class="title">miview</h1>
       <p>一款轻量级、模块化的前端 UI 组件库</p>
     </div>
     <div class="separate-panel">
@@ -33,11 +34,27 @@ export default {
 </script>
 <style lang="scss">
 .pg-index {
+  padding-bottom: 0;
+  position: absolute;
+  top: 80px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
   .index-container {
     width: 960px;
     margin: 0 auto;
     text-align: center;
     padding: 100px 0;
+
+    .title {
+      letter-spacing: 2px;
+      font-weight: 200;
+      font-size: 130px;
+      line-height: 1.2;
+      font-family: Dosis, Source Sans Pro, Helvetica Neue, Arial, sans-serif;
+    }
+
     p {
       margin-top: 56px;
       color: #8994c6;

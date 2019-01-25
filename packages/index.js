@@ -3,6 +3,7 @@
 import BackTop from './back-top';
 import Dialog from './dialog';
 import IndexScss from './index.scss';
+import LanguageInput from './language-input';
 import PasteSelect from './paste-select';
 import Select from './select';
 import SelectArea from './select-area';
@@ -17,6 +18,7 @@ const components = [
   BackTop,
   Dialog,
   IndexScss,
+  LanguageInput,
   PasteSelect,
   Select,
   SelectArea,
@@ -42,6 +44,7 @@ export {
   BackTop,
   Dialog,
   IndexScss,
+  LanguageInput,
   PasteSelect,
   Select,
   SelectArea,
