@@ -19,13 +19,13 @@ Vue.use(Table)
 <div class="demo-back-top demo-block">
   <div class="table">
     <mi-table
-      :tableData="tableData"
-      :tableKey="tableKey"
+      :table-data="tableData"
+      :table-key="tableKey"
       :is-expand="false"
       :is-expand-one="false"
       :is-index="true"
       :is-select="true"
-      :fixed-height="200"
+      :fixed-height="500"
     >
       <template
         slot="date"
@@ -115,13 +115,13 @@ export default {
 <template>
   <div class="table">
     <mi-table
-      :tableData="tableData"
-      :tableKey="tableKey"
+      :table-data="tableData"
+      :table-key="tableKey"
       :is-expand="false"
       :is-expand-one="false"
       :is-index="true"
       :is-select="true"
-      :fixed-height="200"
+      :fixed-height="500"
     >
       <template
         slot="date"
@@ -223,8 +223,8 @@ export default {
 
 参数 | 说明 | 类型 | 可选值 | 默认值
 --- | --- | --- | --- | --- |
-tableData | 表格数据列表 | Array | - | []
-tableKey | 表格对应名称和关键字 | Array | - | []
+table-data | 表格数据列表 | Array | - | []
+table-key | 表格对应名称和关键字 | Array | - | []
 is-expand | 是否显示展开行 | Boolean | - | false
 is-expand-one | 展开行是否只显示一行 | Boolean | - | false
 is-select | 是否显示勾选框 | Boolean | - | false
@@ -232,7 +232,7 @@ is-index | 是否显示索引列 | Boolean | - | false
 fixed-height | 固定高度 | Number/String | - | -
 pagination | 表格分页信息 | Object | - | -
 
-### tableKey API参数
+### table-key API参数
 
 参数 | 说明 | 类型 | 可选值 | 默认值
 --- | --- | --- | --- | --- |

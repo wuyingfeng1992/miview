@@ -41,23 +41,23 @@ Vue.use(miview)
 可以局部注册所需的组件，适用于与其他框架组合使用的场景
 
 ```js
-import { MTable } from 'miview'
+import { Table } from 'miview'
 
 export default {
   components: {
-    MTable
+    [Table.name]: Table
   }
 }
 ```
 
-在模板中，用 `<m-table></m-table>` 自定义标签的方式使用组件
+在模板中，用 `<mi-table></mi-table>` 自定义标签的方式使用组件
 
 ```html
 <template>
   <div>
-    <m-table
-      :tableData="tableData"
-      :tableKey="tableKey"
+    <mi-table
+      :table-data="tableData"
+      :table-key="tableKey"
       :is-expand="true"
       :is-expand-one="true"
       :is-index="true"
