@@ -55,7 +55,7 @@ const registerRoute = isDemo => {
             meta: {
               lang,
               path,
-              name: page.title
+              title: page.title
             }
           })
         } else {
@@ -66,7 +66,7 @@ const registerRoute = isDemo => {
             meta: {
               lang,
               path,
-              name: page.title
+              title: page.title
             }
           })
         }

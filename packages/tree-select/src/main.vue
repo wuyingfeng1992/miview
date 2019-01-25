@@ -9,6 +9,7 @@
       @show="handleShowPopover"
       @hide="handleHidePopover"
       :visible-arrow="popoverVisibleArrow"
+      :width="popoverWidth"
     >
       <el-tree
         ref="tree"
@@ -28,13 +29,16 @@
         :icon-class="treeIconClass"
         :check-strictly="!treeIndependent"
         :default-expanded-keys="expandPath"
+        :filter-node-method="filterNode"
         @node-click="onChange"
         @check="onMultiChange"
       ></el-tree>
     </el-popover>
     <el-select
+      ref="selectInput"
       class="mi-tree-select__select"
       :class="{'selector__single-line': isSingleLine}"
+      :style="`width: ${width}px`"
       :value="value"
       v-popover:popoverTree
       :placeholder="placeholder"
@@ -42,8 +46,11 @@
       value-key="value"
       :multiple="multiple"
       :clearable="clearableAll"
+      :filterable="filterable"
       @remove-tag="onRemove"
       @clear="onChange"
+      @focus="focusSelectInput"
+      :filter-method="remoteMethod"
       popper-class="mi-tree-select__select-popper"
     >
       <el-option
@@ -57,7 +64,8 @@
 </template>
 
 <script>
-import emitter from 'element-ui/src/mixins/emitter';
+import emitter from 'element-ui/src/mixins/emitter'
+import { addResizeListener, removeResizeListener } from 'element-ui/src/utils/resize-event'
 export default {
   name: 'MiTreeSelect',
   mixins: [emitter],
@@ -83,7 +91,7 @@ export default {
       default: false
     },
     width: { // 输入框宽度
-      type: String,
+      type: [String, Number],
     },
     popoverVisibleArrow: { // 是否显示 Tooltip 箭头
       type: Boolean,
@@ -115,7 +123,7 @@ export default {
     },
     emptyText: { // 内容为空的时候展示的文本
       type: String,
-      default: ''
+      default: '暂无数据'
     },
     nodeKey: { // 设置了multiple为true时，必须设置这个值，否则getCheckedKeys读取的子项值为undefined
       type: String,
@@ -148,14 +156,20 @@ export default {
     clearable: { // 	是否可以清空选项，仅适用于单选
       type: Boolean,
       default: false
+    },
+    filterable: { // 可搜索
+      type: Boolean,
+      default: false
     }
   },
   data () {
     return {
       selectorDisplay: false, // 是否显示popover
       tmpVal: '', // 临时选中的值
-      selectedOptions: [],
-      expandPath: [] // 默认展开的节点的 key 的数组
+      selectedOptions: [], // select选项
+      expandPath: [], // 默认展开的节点的 key 的数组
+      popoverWidth: 0, // popover宽度
+      inputWidth: 0
     }
   },
   computed: {
@@ -181,7 +195,26 @@ export default {
       }
     }
   },
+  mounted () {
+    addResizeListener(this.$el, this.handleResize)
+    this.handleResize()
+  },
+  beforeDestroy () {
+    if (this.$el && this.handleResize) removeResizeListener(this.$el, this.handleResize)
+  },
   methods: {
+    handleResize () {
+      this.resetInputWidth()
+    },
+    resetInputWidth () {
+      this.$nextTick(() => {
+        if (this.$refs.selectInput && this.$refs.selectInput.$el) {
+          const popoverTreePaddingWidth = 2 * 13
+          this.inputWidth = this.$refs.selectInput.$el.getBoundingClientRect().width
+          this.popoverWidth = Math.max(this.inputWidth - popoverTreePaddingWidth, 0)
+        }
+      })
+    },
     renderContent (h, { node, data, store }) {
       return (
         <span class={{ 'tree-node': true, 'i-tree-select-node': true, 'is-parent': !data.parent }}>
@@ -208,7 +241,7 @@ export default {
             })
           })
           this.selectedOptions = selectedOptions
-          console.log('selectedOptions: ', selectedOptions);
+          // console.log('selectedOptions: ', selectedOptions);
 
           this.update(e ? e : '');
         })
@@ -262,7 +295,7 @@ export default {
     update (data) {
       this.tempVal = data;
       this.$emit('change', this.tempVal);
-      console.log('update: ', data);
+      // console.log('update: ', data);
 
       this.dispatch('ElFormItem', 'el.form.change', this.tempVal);
     },
@@ -272,7 +305,7 @@ export default {
      */
     checkNodes (ids) {
       this.$nextTick(() => {
-        console.log(this.$refs.tree);
+        // console.log(this.$refs.tree);
         this.$refs.tree && this.$refs.tree.setCheckedKeys(ids, this.treeIndependent);
         const selectedOptions = []
         ids.forEach(key => {
@@ -284,6 +317,21 @@ export default {
         })
         this.selectedOptions = selectedOptions
       })
+    },
+    filterNode (value, data) {
+      if (!value) return true;
+      return data[this.props.label].indexOf(value) !== -1;
+    },
+    focusSelectInput () {
+      if (!this.multiple || !this.filterable) return
+      this.selectorDisplay = true
+    },
+    remoteMethod (query) {
+      if (!this.filterable) return
+      if (query !== '') {
+        this.selectorDisplay = true
+        this.$refs.tree && this.$refs.tree.filter(query)
+      }
     }
   }
 }

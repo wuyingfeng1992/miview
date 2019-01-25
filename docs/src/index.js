@@ -24,6 +24,7 @@ router.beforeEach((route, redirect, next) => {
   //   location.replace('mobile.html' + location.hash);
   // }
   // progress.start()
+  console.log('title: ', route.meta)
   document.title = route.meta.title || document.title
   next()
 })

@@ -161,8 +161,9 @@ export default {
       :data="data"
       v-model="selected2"
       multiple
+      filterable
       is-single-line
-      :check-on-click-node="true"
+      :check-on-click-node="false"
     />
   </div>
 </div>
@@ -232,8 +233,9 @@ export default {
       :data="data"
       v-model="selected"
       multiple
+      filterable
       is-single-line
-      :check-on-click-node="true"
+      :check-on-click-node="false"
     />
   </div>
 </template>
@@ -297,3 +299,29 @@ export default {
 </script>
 ```
 :::
+
+### API
+
+参数 | 说明 | 类型 | 可选值 | 默认值
+--- | --- | --- | --- | --- |
+data | 树形组件数据 | Array | - | []
+props | 树节点配置选项 | Object | - | {}
+multiple | 是否多选 | Boolean | - | false
+disabled | 是否禁用 | Boolean | - | false
+node-key | 	每个树节点用来作为唯一标识的属性 | String | - | id
+popover-visible-arrow | 是否显示 Tooltip 箭头 | Boolean | - | false
+check-on-click-node | 是否在点击节点的时候选中节点 | Boolean | - | false
+empty-text | 内容为空的时候展示的文本 | String | - | -
+tree-icon-class | 自定义树节点的图标 | String | - | -
+placeholder | 占位符 | String | - | 请选择
+filterable | 可搜索 | Boolean | - | false
+width | select框的宽度 | String | - | 220
+
+[更多参数请查看](http://element-cn.eleme.io/#/zh-CN/component/tree)
+
+### Events
+
+事件名称 | 说明 | 回调参数
+---|--- | --- |
+change | 选中值发生变化时触发 | -
+clear | 清空输入框的值 | -
