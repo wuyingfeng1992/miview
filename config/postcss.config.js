@@ -1,4 +1,4 @@
-/* module.exports = {
+module.exports = {
   plugins: {
     'postcss-import': {},
     'postcss-preset-env': {
@@ -12,9 +12,9 @@
     //   minPixelValue: 2
     // }
   }
-} */
+}
 
-const postcssImport = require('postcss-import')
+/* const postcssImport = require('postcss-import')
 const postcssPresetEnv = require('postcss-preset-env')
 const cssnano = require('cssnano')
 
@@ -24,5 +24,4 @@ const postcssPlugins = [
     browsers: 'last 2 versions'
   }),
   cssnano()
-]
-
+] */

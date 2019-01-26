@@ -2,6 +2,8 @@
 // This file is auto gererated by build/build-entry.js
 import BackTop from './back-top';
 import Dialog from './dialog';
+import DragDrawer from './drag-drawer';
+import Drawer from './drawer';
 import IndexScss from './index.scss';
 import LanguageInput from './language-input';
 import PasteSelect from './paste-select';
@@ -17,6 +19,8 @@ const version = '0.2.12';
 const components = [
   BackTop,
   Dialog,
+  DragDrawer,
+  Drawer,
   IndexScss,
   LanguageInput,
   PasteSelect,
@@ -43,6 +47,8 @@ export {
   version,
   BackTop,
   Dialog,
+  DragDrawer,
+  Drawer,
   IndexScss,
   LanguageInput,
   PasteSelect,

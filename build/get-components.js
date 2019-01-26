@@ -11,6 +11,7 @@ const excludes = [
   'mixins',
   'utils',
   'directives',
+  'mixins',
   '.DS_Store',
   'pdf-preview'
 ]

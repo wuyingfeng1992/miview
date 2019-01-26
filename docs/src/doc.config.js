@@ -73,15 +73,15 @@ module.exports = {
               { path: '/language-input', title: 'LanguageInput 多语言' }
             ]
           },
-          {
-            groupName: '反馈组件',
-            list: [
-              {
-                path: '/loading',
-                title: 'Loading 加载'
-              }
-            ]
-          },
+          // {
+          //   groupName: '反馈组件',
+          //   list: [
+          //     {
+          //       path: '/loading',
+          //       title: 'Loading 加载'
+          //     }
+          //   ]
+          // },
           {
             groupName: '展示组件',
             list: [
@@ -92,6 +92,10 @@ module.exports = {
               {
                 path: '/table',
                 title: 'Table 表格'
+              },
+              {
+                path: '/drawer',
+                title: 'Drawer 抽屉'
               }
             ]
           },
@@ -100,19 +104,19 @@ module.exports = {
             list: [
               {
                 path: '/tree-select',
-                title: 'TreeSelect 树型选择器'
-              }
-            ]
-          },
-          {
-            groupName: '业务组件',
-            list: [
-              {
-                path: '/select-area',
-                title: 'SelectArea 省市区选择器'
+                title: 'TreeSelect 树选择'
               }
             ]
           }
+          // {
+          //   groupName: '业务组件',
+          //   list: [
+          //     {
+          //       path: '/select-area',
+          //       title: 'SelectArea 省市区选择器'
+          //     }
+          //   ]
+          // }
         ]
       }
     ]

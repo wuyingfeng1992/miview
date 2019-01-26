@@ -1,4 +1,4 @@
-## TreeSelect 选择器
+## TreeSelect 树选择
 
 ### 使用指南
 

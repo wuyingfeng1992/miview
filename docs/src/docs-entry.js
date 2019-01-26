@@ -6,6 +6,8 @@ export default {
   'quickstart.zh-CN': () => import('../markdown/quickstart.zh-CN.md'),
   'back-top.zh-CN': () => import('../../packages/back-top/zh-CN.md'),
   'dialog.zh-CN': () => import('../../packages/dialog/zh-CN.md'),
+  'drag-drawer.zh-CN': () => import('../../packages/drag-drawer/zh-CN.md'),
+  'drawer.zh-CN': () => import('../../packages/drawer/zh-CN.md'),
   'language-input.zh-CN': () => import('../../packages/language-input/zh-CN.md'),
   'paste-select.zh-CN': () => import('../../packages/paste-select/zh-CN.md'),
   'select.zh-CN': () => import('../../packages/select/zh-CN.md'),

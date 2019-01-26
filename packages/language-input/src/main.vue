@@ -87,7 +87,7 @@ let lang = 'zh-CN'
 export default {
   name: 'MiLanguageInput',
   props: {
-    params: {
+    params: { // 自定义提交字段, field 字段, label 国际化
       type: Object,
       required: true,
       default: () => ({})
@@ -100,23 +100,23 @@ export default {
       type: Boolean,
       default: false
     },
-    width: {
+    width: { // 输入框的宽度
       type: String,
       default: '240'
     },
-    disabled: {
+    disabled: { // 是否禁用主题内的所有组件
       type: Boolean,
       default: false
     },
     maxlength: { // input框最大的输入字符数
       type: Number,
-      default: 5000
+      default: 10
     },
-    labelWidth: {
+    labelWidth: { // label的宽度, 为0时隐藏label
       type: [String, Number],
       default: '0'
     },
-    inputPlaceholder: {
+    inputPlaceholder: { // input框的占位符
       type: String,
     },
     size: {
@@ -126,17 +126,17 @@ export default {
   },
   data () {
     return {
-      form: {
+      form: { // input框的数据
         languageType: lang,
         [this.params.field]: ''
       },
       dialogVisible: false, // 控制弹框是否展开
-      isCancelSubContent: false, // 是否是点击了清空按钮
       inputWidth: this.width
     };
   },
   computed: {
     languageContent () { // 复制父级组件的主题列表
+      console.log('111111');
       return deepClone(this.content)
     },
     showLabel () { // 是否展示label
@@ -168,6 +168,20 @@ export default {
       return `${this.subContentArr.length}个${this.params.label}`
     }
   },
+  // watch: {
+  //   languageContent: {
+  //     deep: true,
+  //     handler (val) {
+  //       if (val) {
+  //         val.forEach(item => {
+  //           if (item.languageType === this.form.languageType) {
+  //             this.form[this.params.field] = item[this.params.field]
+  //           }
+  //         })
+  //       }
+  //     }
+  //   }
+  // },
   methods: {
     changeInput () {
       // 给多选的弹出框赋值
@@ -205,6 +219,17 @@ export default {
       this.dialogVisible = false;
     },
     update (content) {
+      content.forEach(item => {
+        // 给主题弹出框赋值
+        const currLangItem = this.languageContent.find(langItem => langItem.languageType === item.languageType)
+        if (currLangItem) {
+          currLangItem[this.params.field] = item[this.params.field]
+        }
+        // 给主题框赋值
+        if (item.languageType === this.form.languageType) {
+          this.form[this.params.field] = item[this.params.field]
+        }
+      })
       this.$emit('change', content)
     },
     clear () { // 清空form表单
@@ -214,14 +239,6 @@ export default {
       })
       this.update(this.languageContent)
       this.dialogVisible = false
-    },
-    handleSubContentChange () {
-    },
-    clearEmptyArray (arr) {
-    },
-    // 搜索条件姓名/工号多行复制粘贴格式装换
-    formatTransform (val) {
-      return val.replace(/，/g, ',')
     }
   }
 };

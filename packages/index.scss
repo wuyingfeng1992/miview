@@ -3,7 +3,7 @@
  */
 
 /* base */
-@import './style/base.scss';
+@import './styles/index.scss';
 
 /* components */
 @import './paste-select/index.scss';
@@ -19,3 +19,4 @@
 @import './transfer/index.scss';
 @import './tree-select/index.scss';
 @import './language-input/index.scss';
+@import './drawer/index.scss';
