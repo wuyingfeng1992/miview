@@ -1,18 +1,24 @@
 {
   "name": "miview",
   "version": "0.2.15",
+  "description": "`miview` 是一款基于 `Vue.js 2.0` 和 `ElementUI 2.0` 的前端 UI 通用组件库，主要用于快速开发 PC 网站中后台产品",
+  "homepage": "https://ly2011.github.io/miview",
   "main": "lib/index.js",
   "module": "es/index.js",
   "style": "lib/index.css",
   "typings": "types/index.d.ts",
-  "files": [
-    "es",
-    "lib",
-    "packages",
-    "types",
-    "vetur"
-  ],
+  "files": ["es", "lib", "packages", "types", "vetur"],
   "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ly2011/miview.git"
+  },
+  "keywords": ["miview", "vue", "component"],
+  "author": "ly2011",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/iview/iview/issues"
+  },
   "scripts": {
     "bootstrap": "yarn || npm i",
     "dev": "npm-run-all --parallel build:entry dev:site",
@@ -113,21 +119,21 @@
     "webpack-dev-server": "^3.1.10",
     "webpack-merge": "^4.1.4"
   },
-  "gitHooks": {
-    "pre-commit": "lint-staged"
+  "peerDependencies": {
+    "vue": ">= 2.5.0",
+    "element-ui": ">= 2.3.9"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "lint-staged": {
-    "packages/**/*.{js,vue}": [
-      "eslint",
-      "git add"
-    ]
+    "packages/**/*.{js,vue}": ["eslint", "git add"]
   },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  },
-  "peerDependencies": {
-    "vue": "^2.5.22"
   }
 }

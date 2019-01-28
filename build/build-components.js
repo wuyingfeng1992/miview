@@ -1,5 +1,5 @@
 /**
- * Compile components
+ * Compile components(编译输出组件)
  */
 const fs = require('fs-extra')
 const path = require('path')
