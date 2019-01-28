@@ -7,21 +7,17 @@
 ```html
 <template>
   <div class="transfer-wrapper">
-    <ly-transfer v-model="selectedCourseId" :data="data" filterable filter-placeholder="请输入城市拼音" :titles="['未选科目', '已选科目']" :button-texts="['到左边', '到右边']" :render-content="renderFunc" :isRightDraggable="true" width="380px">
+    <mi-transfer v-model="selectedCourseId" :data="data" filterable filter-placeholder="请输入城市拼音" :titles="['未选科目', '已选科目']" :button-texts="['到左边', '到右边']" :render-content="renderFunc" :isRightDraggable="true" width="380px">
       <!-- <span slot-scope="{ option }">{{ option.key }} - {{ option.label }}</span> -->
       <!-- <el-button class="transfer-footer" slot="left-footer" size="small">操作</el-button> -->
       <!-- <el-button class="transfer-footer" slot="right-footer" size="small">操作</el-button> -->
-    </ly-transfer>
+    </mi-transfer>
   </div>
 </template>
 <script>
-import Transfer from '../../packages/transfer/index'
 
 export default {
   name: 'TransferExample',
-  components: {
-    LyTransfer: Transfer
-  },
   data () {
     const generateData = _ => {
       const data = [];

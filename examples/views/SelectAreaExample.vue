@@ -1,6 +1,6 @@
 <template>
   <div class="select-area-example">
-    <m-select-area
+    <mi-select-area
       v-model="selected"
       :data="pcaa"
       :level="2"
@@ -11,11 +11,7 @@
 
 <script>
 import { pcaa } from 'area-data'
-// import SelectArea from '../../packages/select-area/index'
 export default {
-  // components: {
-  //   SelectArea
-  // },
   data () {
     return {
       selected: ['440000', '440100', '440103'],

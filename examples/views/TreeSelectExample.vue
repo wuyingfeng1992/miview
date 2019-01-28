@@ -1,6 +1,6 @@
 <template>
   <div class="tree-select-example">
-    <m-tree-select
+    <mi-tree-select
       :data="data"
       :show-checkbox="true"
       :check-on-click-node="true"
@@ -9,11 +9,7 @@
 </template>
 
 <script>
-// import ITreeSelect from '../../packages/tree-select/index'
 export default {
-  // components: {
-  //   ITreeSelect
-  // },
   data () {
     return {
       data: [{

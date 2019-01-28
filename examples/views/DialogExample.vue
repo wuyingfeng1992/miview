@@ -7,7 +7,7 @@
 
     <p>{{key}}</p>
 
-    <m-dialog
+    <mi-dialog
       :key="key"
       title="提示"
       v-model="centerDialogVisible"
@@ -24,16 +24,12 @@
           @click="centerDialogVisible = false"
         >确 定</el-button>
       </span>
-    </m-dialog>
+    </mi-dialog>
   </div>
 </template>
 
 <script>
-// import IDialog from '../../packages/dialog/index'
 export default {
-  // components: {
-  //   [IDialog.name]: IDialog
-  // },
   data () {
     return {
       centerDialogVisible: false,
@@ -42,6 +38,3 @@ export default {
   }
 }
 </script>
-
-<style>
-</style>

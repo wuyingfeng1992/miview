@@ -1,6 +1,6 @@
 <template>
   <div class="i-select-demo">
-    <m-select
+    <mi-select
       :options="options"
       custom
       multiple
@@ -16,11 +16,7 @@
 </template>
 
 <script>
-// import ISelect from '../../packages/select/index'
 export default {
-  // components: {
-  //   ISelect
-  // },
   data () {
     return {
       options: [{

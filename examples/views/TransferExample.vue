@@ -1,6 +1,6 @@
 <template>
   <div class="transfer-wrapper">
-    <m-transfer
+    <mi-transfer
       v-model="selectedCourseId"
       :data="data"
       filterable
@@ -14,17 +14,12 @@
       <!-- <span slot-scope="{ option }">{{ option.key }} - {{ option.label }}</span> -->
       <!-- <el-button class="transfer-footer" slot="left-footer" size="small">操作</el-button> -->
       <!-- <el-button class="transfer-footer" slot="right-footer" size="small">操作</el-button> -->
-    </m-transfer>
+    </mi-transfer>
   </div>
 </template>
 <script>
-// import Transfer from '../../packages/transfer/index'
-
 export default {
   name: 'TransferExample',
-  // components: {
-  //   LyTransfer: Transfer
-  // },
   data () {
     const generateData = _ => {
       const data = [];

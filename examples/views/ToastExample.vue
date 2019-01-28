@@ -24,13 +24,8 @@
 </template>
 
 <script>
-// import Toast from '../../packages/toast/index'
-
 export default {
   name: 'ToastExample',
-  // components: {
-  //   Toast
-  // },
   data () {
     return {
       options: [

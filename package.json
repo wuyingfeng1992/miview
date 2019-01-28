@@ -12,6 +12,7 @@
     "types",
     "vetur"
   ],
+  "sideEffects": false,
   "scripts": {
     "bootstrap": "yarn || npm i",
     "dev": "npm-run-all --parallel build:entry dev:site",
@@ -115,7 +116,17 @@
   "gitHooks": {
     "pre-commit": "lint-staged"
   },
-  "lint-staged": {},
+  "lint-staged": {
+    "packages/**/*.{js,vue}": [
+      "eslint",
+      "git add"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
   "peerDependencies": {
     "vue": "^2.5.22"
   }

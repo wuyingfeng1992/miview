@@ -1,6 +1,6 @@
 <template>
   <div class="paste-select-example">
-    <m-paste-select
+    <mi-paste-select
       ref="legalNamesStr"
       :params="{field: 'legalNamesStr', label: '姓名'}"
       :value="ruleForm.legalNamesStr"
@@ -14,11 +14,7 @@
 </template>
 
 <script>
-// import PasteSelect from '../../packages/paste-select/index'
 export default {
-  // components: {
-  //   PasteSelect
-  // },
   data () {
     return {
       ruleForm: {
