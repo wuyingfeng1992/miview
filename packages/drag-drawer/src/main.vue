@@ -52,8 +52,6 @@
 </template>
 
 <script>
-// https://admin.iviewui.com/components/drag_drawer_page
-// https://github.com/iview/iview-admin/blob/master/src/components/drag-drawer/drag-drawer.vue
 import Drawer from '../../drawer'
 import DragDrawerTrigger from './drag-drawer-trigger.vue'
 import RenderDom from '../../utils/render-dom'

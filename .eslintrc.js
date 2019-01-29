@@ -11,6 +11,7 @@ module.exports = {
     semi: 0,
     'no-console': 0,
     'no-debugger': 0,
+    camelcase: 0,
     'vue/html-self-closing': 0,
     'vue/html-closing-bracket-newline': 0,
     'vue/attribute-hyphenation': 0,

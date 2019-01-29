@@ -73,15 +73,15 @@ module.exports = {
               { path: '/language-input', title: 'LanguageInput 多语言' }
             ]
           },
-          // {
-          //   groupName: '反馈组件',
-          //   list: [
-          //     {
-          //       path: '/loading',
-          //       title: 'Loading 加载'
-          //     }
-          //   ]
-          // },
+          {
+            groupName: '反馈组件',
+            list: [
+              {
+                path: '/loading-bar',
+                title: 'LoadingBar 加载'
+              }
+            ]
+          },
           {
             groupName: '展示组件',
             list: [

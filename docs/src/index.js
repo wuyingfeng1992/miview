@@ -15,6 +15,7 @@ Vue.use(VueRouter)
 
 let lang = 'zh-CN'
 Vue.prototype.$vantLang = lang
+
 const router = new VueRouter({
   mode: 'hash',
   routes: routes()

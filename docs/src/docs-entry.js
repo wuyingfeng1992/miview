@@ -9,6 +9,7 @@ export default {
   'drag-drawer.zh-CN': () => import('../../packages/drag-drawer/zh-CN.md'),
   'drawer.zh-CN': () => import('../../packages/drawer/zh-CN.md'),
   'language-input.zh-CN': () => import('../../packages/language-input/zh-CN.md'),
+  'loading-bar.zh-CN': () => import('../../packages/loading-bar/zh-CN.md'),
   'paste-select.zh-CN': () => import('../../packages/paste-select/zh-CN.md'),
   'select.zh-CN': () => import('../../packages/select/zh-CN.md'),
   'select-area.zh-CN': () => import('../../packages/select-area/zh-CN.md'),

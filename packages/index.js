@@ -6,6 +6,7 @@ import DragDrawer from './drag-drawer';
 import Drawer from './drawer';
 import IndexScss from './index.scss';
 import LanguageInput from './language-input';
+import LoadingBar from './loading-bar';
 import PasteSelect from './paste-select';
 import Select from './select';
 import SelectArea from './select-area';
@@ -23,6 +24,7 @@ const components = [
   Drawer,
   IndexScss,
   LanguageInput,
+  LoadingBar,
   PasteSelect,
   Select,
   SelectArea,
@@ -51,6 +53,7 @@ export {
   Drawer,
   IndexScss,
   LanguageInput,
+  LoadingBar,
   PasteSelect,
   Select,
   SelectArea,
