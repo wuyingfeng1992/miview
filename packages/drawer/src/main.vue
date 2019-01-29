@@ -21,6 +21,7 @@
           :class="classes"
           :style="mainStyles"
           v-show="visible"
+          ref="mainRef"
         >
           <div
             :class="contentClasses"
@@ -38,6 +39,7 @@
             <div
               :class="[prefixCls + '-header']"
               v-if="showHead"
+              ref="headerRef"
             >
               <slot name="header">
                 <div :class="[prefixCls + '-header-inner']">
@@ -48,6 +50,7 @@
             <div
               :class="[prefixCls + '-body']"
               :style="styles"
+              ref="bodyRef"
             >
               <slot></slot>
             </div>

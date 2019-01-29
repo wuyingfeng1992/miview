@@ -1,25 +1,69 @@
 <template>
-  <div class="mi-drag-drawer-box">
-    <transition name="fade">
-      <div class="mi-drag-drawer-mask"></div>
-    </transition>
-    <div :class="outerClasses">
-      <div class="mi-drawer mi-drawer-left mi-drawer-inner">
+  <mi-drawer
+    ref="drawerWrapper"
+    :value="value"
+    @input="handleInput"
+    :width="width"
+    :class-name="outerClasses"
+    v-bind="$attrs"
+    v-on="$listeners"
+  >
+    <!-- slots start -->
+    <template v-for="(slots, slotsName) in $slots">
+      <!-- <p :key="`b_drawer_${slotsName}`">{{slotsName}}</p> -->
+      <template v-if="slotsName !== 'default'">
+        <render-dom
+          v-for="(render, index) in slots"
+          :key="`b_drawer_${slotsName}_${index}`"
+          :render="() => render"
+          :slot="slotsName"
+        >
+        </render-dom>
+      </template>
+      <template v-else>
+        <div
+          :class="`${prefix}-body-wrapper`"
+          :key="`b_drawer_${slotsName}`"
+          ref="bodyWrapperRef"
+        >
+          <render-dom
+            v-for="(render, index) in slots"
+            :key="`b_drawer_${slotsName}_${index}`"
+            :render="() => render"
+            :slot="slotsName"
+          >
+          </render-dom>
+        </div>
+      </template>
+    </template>
+    <!-- slots end -->
 
-      </div>
+    <div
+      v-if="draggable"
+      :style="triggerStyle"
+      :class="`${prefix}-trigger-wrapper`"
+      @mousedown="handleTriggerMousedown"
+    >
+      <slot name="trigger">
+        <drag-drawer-trigger></drag-drawer-trigger>
+      </slot>
     </div>
-  </div>
+  </mi-drawer>
 </template>
 
 <script>
 // https://admin.iviewui.com/components/drag_drawer_page
 // https://github.com/iview/iview-admin/blob/master/src/components/drag-drawer/drag-drawer.vue
+import Drawer from '../../drawer'
 import DragDrawerTrigger from './drag-drawer-trigger.vue'
+import RenderDom from '../../utils/render-dom'
 import Mixin from '../mixin'
 export default {
   name: 'MiDragDrawer',
   components: {
-    DragDrawerTrigger
+    [Drawer.name]: Drawer,
+    DragDrawerTrigger,
+    RenderDom
   },
   mixins: [Mixin],
   props: {
@@ -71,7 +115,53 @@ export default {
         position: this.$attrs.inner ? 'absolute' : 'fixed'
       }
     }
+  },
+  mounted () {
+    document.addEventListener('mousemove', this.handleMousemove, false)
+    document.addEventListener('mouseup', this.handleMouseup, false)
+    this.setWrapperWidth()
+  },
+  beforeDestroy () {
+    document.removeEventListener('mousemove', this.handleMousemove, false)
+    document.removeEventListener('mouseup', this.handleMouseup, false)
+  },
+  methods: {
+    handleInput (status) {
+      this.$emit('input', status)
+    },
+    handleTriggerMousedown (event) {
+      this.canMove = true
+      this.$emit('on-resize-start')
+      // 防止鼠标选中抽屉中文字，造成拖动trigger触发浏览器原生拖动行为
+      window.getSelection().removeAllRanges()
+    },
+    handleMousemove (event) {
+      if (!this.canMove) return
+      // 更新容器宽度和距离左侧页面距离，如果是window则距左侧距离为0
+      this.setWrapperWidth()
+      const left = event.pageX - this.wrapperLeft
+      // 如果抽屉方向为右边，宽度计算需用容器宽度减去left
+      let width = this.placement === 'right' ? this.wrapperWidth - left : left
+      // 限定做小宽度
+      width = Math.max(width, parseFloat(this.minWidth))
+      event.atMin = width === parseFloat(this.minWidth)
+      // 如果当前width不大于100，视为百分比
+      if (width <= 100) width = (width / this.wrapperWidth) * 100
+      this.$emit('update:width', parseInt(width))
+      this.$emit('on-resize', event)
+    },
+    handleMouseup (event) {
+      this.canMove = false
+      this.$emit('on-resize-end')
+    },
+    setWrapperWidth () {
+      const {
+        width,
+        left
+      } = this.$refs.drawerWrapper.$el.getBoundingClientRect()
+      this.wrapperWidth = width
+      this.wrapperLeft = left
+    }
   }
 }
 </script>
-

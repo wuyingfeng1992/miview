@@ -96,6 +96,10 @@ module.exports = {
               {
                 path: '/drawer',
                 title: 'Drawer 抽屉'
+              },
+              {
+                path: '/drag-drawer',
+                title: 'DragDrawer 可拖拽抽屉'
               }
             ]
           },
